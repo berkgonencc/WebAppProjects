@@ -1,0 +1,52 @@
+            modelBuilder
+            .Entity<Category>()
+            .HasData(
+                new Category() { CategoryId = 1, Name = "Phone", Description = "Phone Category", Url = "phone" },
+                new Category() { CategoryId = 2, Name = "Computer", Description = "Computer Category", Url = "computer" },
+                new Category() { CategoryId = 3, Name = "Electronic", Description = "Electronic Category", Url = "electronic" },
+                new Category() { CategoryId = 4, Name = "Household Appliances", Description = "Household Appliances Category", Url = "household-appliances" }
+            );
+
+            modelBuilder
+                .Entity<Product>()
+                .HasData(
+                    new Product() { ProductId = 1, Name = "IPhone 13", Description = "128 Gb", Price = 24000, Url = "iphone-13", IsApproved = true, IsHome = true, ImageUrl = "1.png" },
+
+                    new Product() { ProductId = 2, Name = "IPhone 13 Pro", Description = "256 Gb", Price = 28000, Url = "iphone-13-pro", IsApproved = true, IsHome = true, ImageUrl = "2.png" },
+
+                    new Product() { ProductId = 3, Name = "Samsung S21", Description = "128 Gb", Price = 22000, Url = "samsung-s21", IsApproved = true, IsHome = true, ImageUrl = "3.png" },
+
+                    new Product() { ProductId = 4, Name = "Vestel CM125", Description = "Full Automatic Washing Machine", Price = 18000, Url = "vestel-cm-125", IsApproved = true, IsHome = false, ImageUrl = "4.png" },
+
+                    new Product() { ProductId = 5, Name = "Arcelik TV-102 Smart TV", Description = "102 inch smart tv", Price = 24000, Url = "arcelik-tv-102-smart-tv", IsApproved = true, IsHome = false, ImageUrl = "5.png" },
+
+                    new Product() { ProductId = 6, Name = "LG TV-102 Smart TV", Description = "102 inch smart tv", Price = 24000, Url = "lg-tv-102-smart-tv", IsApproved = false, IsHome = true, ImageUrl = "5.png" },
+
+                    new Product() { ProductId = 7, Name = "Sony TV-102 Smart TV", Description = "102 inch smart tv", Price = 24000, Url = "sony-tv-102-smart-tv", IsApproved = true, IsHome = false, ImageUrl = "5.png" },
+
+                    new Product() { ProductId = 8, Name = "Arcelik TV-102 Smart TV", Description = "102 inç smart tv", Price = 24000, Url = "arcelik-tv-102-smart-tv", IsApproved = true, IsHome = false, ImageUrl = "5.png" },
+
+                    new Product() { ProductId = 9, Name = "Arcelik TV-102 Smart TV", Description = "102 inç smart tv", Price = 24000, Url = "arcelik-tv-102-smart-tv", IsApproved = true, IsHome = false, ImageUrl = "5.png" },
+
+                    new Product() { ProductId = 10, Name = "Arcelik TV-102 Smart TV", Description = "102 inç smart tv", Price = 24000, Url = "arcelik-tv-102-smart-tv", IsApproved = true, IsHome = false, ImageUrl = "5.png" }
+
+                );
+
+            modelBuilder
+                .Entity<ProductCategory>()
+                .HasData(
+                    new ProductCategory() { ProductId = 1, CategoryId = 1 },
+                    new ProductCategory() { ProductId = 2, CategoryId = 1 },
+                    new ProductCategory() { ProductId = 3, CategoryId = 1 },
+                    new ProductCategory() { ProductId = 1, CategoryId = 3 },
+                    new ProductCategory() { ProductId = 2, CategoryId = 3 },
+                    new ProductCategory() { ProductId = 3, CategoryId = 3 },
+                    new ProductCategory() { ProductId = 4, CategoryId = 3 },
+                    new ProductCategory() { ProductId = 4, CategoryId = 4 },
+                    new ProductCategory() { ProductId = 5, CategoryId = 3 },
+                    new ProductCategory() { ProductId = 6, CategoryId = 3 },
+                    new ProductCategory() { ProductId = 7, CategoryId = 3 },
+                    new ProductCategory() { ProductId = 8, CategoryId = 3 },
+                    new ProductCategory() { ProductId = 9, CategoryId = 3 },
+                    new ProductCategory() { ProductId = 10, CategoryId = 3 }
+                );
