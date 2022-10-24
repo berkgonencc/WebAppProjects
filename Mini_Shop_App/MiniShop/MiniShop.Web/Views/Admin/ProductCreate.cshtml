@@ -1,0 +1,85 @@
+﻿@model ProductWithCategoriesModel
+<h1 class="text-primary text-center display-5">Create Product</h1>
+<hr />
+<form asp-controller="Admin" asp-action="ProductCreate" method="post" enctype="multipart/form-data">
+    <div class="row">
+        <div class="col-md-8">
+            @*Products*@
+            <div class="row col-form-label mb-2">
+                <div class="col-md-2">
+                    <label asp-for="Name"></label>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" asp-for="Name"/>
+                </div>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="row col-form-label mb-2">
+                <div class="col-md-2">
+                    <label asp-for="Properties"></label>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" asp-for="Properties" />
+                </div>
+                <span asp-validation-for="Properties" class="text-danger"></span>
+            </div>
+            <div class="row col-form-label mb-2">
+                <div class="col-md-2">
+                    <label asp-for="Price"></label>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" asp-for="Price" />
+                </div>
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="row col-form-label mb-2">
+                <div class="col-md-2">
+                    <label>Image</label>
+                </div>
+                <div class="col-md-10">
+                    <input type="file" name="file" id="formFile" accept="image/" />
+                </div>
+                <span class="text-danger">@ViewBag.ImageErrorMessage</span>
+            </div>
+            <div class="row col-form-label mb-2">
+                <div class="col-md-10 offset-2">
+                    <button class="btn btn-success" type="submit">Save</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            @* Category list, IsHome, IsApproved *@
+            @foreach (var category in (List<Category>)ViewBag.Categories)
+            {
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value=@category.Id name="categoryIds" 
+                    @if (ViewData["SelectedCategories"] != null)
+                    {
+                       @(((int[])ViewData["SelectedCategories"]).Any(c=>c==category.Id) ? "checked" : "")
+                    } 
+                                                                                                          />                              
+                    <label class="form-check-label">
+                        @category.Name
+                    </label>
+                </div>
+            }
+            <span class="text-danger">@ViewBag.CategoryErrorMessage</span>
+            <hr />
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" asp-for="IsApproved" />
+                <label class="form-check-label">Is Approved?</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" asp-for="IsHome" />
+                <label class="form-check-label">Is Home?</label>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}
+
+
+

@@ -1,0 +1,17 @@
+﻿@model Product
+<div class="col-4">
+    <div class="card mb-2">
+        <div class="card-img text-center p-2">
+            <img src="~/images/@Model.ImageUrl">
+        </div>
+        <div class="card-body">
+            <h5 class="card-title text-center text-primary">@Model.Name</h5>
+            <p class="text-muted text-center ps-2">@Model.Price</p>
+
+            <div class="card-footer bg-white d-flex justify-content-around">
+                <a class="btn btn-primary" asp-controller="Home" asp-action="Details" asp-route-url=@Model.Url>Details</a>
+                <a href="#" class="btn btn-success">Add to Card</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,94 @@
+﻿@model ProductWithCategoriesModel
+<h1 class="text-primary text-center display-5">Edit Product</h1>
+<hr />
+<form asp-controller="Admin" asp-action="ProductEdit" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="Id" value=@Model.Id />
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row col-form-label mb-2">
+                <div class="col-md-2">
+                    <label asp-for="Name"></label>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" asp-for="Name" />
+                </div>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="row col-form-label mb-2">
+                <div class="col-md-2">
+                    <label asp-for="Properties"></label>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" asp-for="Properties" />
+                </div>
+                <span asp-validation-for="Properties" class="text-danger"></span>
+            </div>
+            <div class="row col-form-label mb-2">
+                <div class="col-md-2">
+                    <label asp-for="Price"></label>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" asp-for="Price" />
+                </div>
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="row col-form-label mb-2">
+                <div class="col-md-2">
+                    <label asp-for="ImageUrl">Image</label>
+                </div>
+                <div class="col-md-10">
+                    <img id="imgViewer" src="~/images/@Model.ImageUrl" />
+                    <input class="d-none" type="file" name="file" id="formFile" accept="image/" />
+                    <div>
+                        <label class="btn btn-light" for="formFile">Upload Image</label>
+                        <label id="imgUrl">@Model.ImageUrl</label>
+                    </div>
+                </div>
+                <span class="text-danger">@ViewBag.ImageErrorMessage</span>
+            </div>
+            <div class="row col-form-label mb-2">
+                <div class="col-md-10 offset-2">
+                    <button class="btn btn-success" type="submit">Save Changes</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            @foreach (var category in (List<Category>)ViewBag.Categories)
+            {
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value=@category.Id name="categoryIds"
+                       @if (Model.SelectedCategories != null)
+                       {
+                       @((Model.SelectedCategories).Any(c=>c.Id == category.Id) ? "checked" : "")
+                       } />
+                    <label class="form-check-label">
+                        @category.Name
+                    </label>
+                </div>
+            }
+            <span class="text-danger">@ViewBag.CategoryErrorMessage</span>
+            <hr />
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" asp-for="IsApproved" />
+                <label class="form-check-label">Is Approved?</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" asp-for="IsHome" />
+                <label class="form-check-label">Is Home?</label>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<script>
+    let formFile = document.getElementById("formFile");
+    let imgViewer = document.getElementById("imgViewer");
+    let imgUrl = document.getElementById("imgUrl");
+    formFile.addEventListener("change",function(event){
+        let files = event.target.files;
+        imgViewer.setAttribute("src",window.URL.createObjectURL(files[0]));
+        imgUrl.innerText = imgViewer.getAttribute("src");
+    });
+</script>
+
