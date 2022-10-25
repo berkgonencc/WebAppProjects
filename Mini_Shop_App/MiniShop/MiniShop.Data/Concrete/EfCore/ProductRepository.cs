@@ -36,6 +36,17 @@ namespace MiniShop.Data.Concrete.EfCore
             await context.SaveChangesAsync();
         }
 
+        public async Task<List<Product>> GetAllProductsAsync()
+        {
+            return await context.Products.Where(p => p.IsDeleted == false).ToListAsync();
+        }
+
+        public async Task<List<Product>> GetDeletedProducts()
+        {
+            return await context.Products.Where(p => p.IsDeleted).ToListAsync();
+
+        }
+
         public async Task<List<Product>> GetHomePageProductsAsync(string category)
         {
             var products = context
@@ -72,6 +83,13 @@ namespace MiniShop.Data.Concrete.EfCore
                 .FirstOrDefaultAsync();
         }
 
+        public async Task IsDeleteAsync(Product product)
+        {
+            product.IsDeleted = true;
+            context.Update(product);
+            await context.SaveChangesAsync();
+        }
+
         public async Task UpdateAsync(Product product, int[] categoryIds)
         {
             Product entity = await context
@@ -94,5 +112,35 @@ namespace MiniShop.Data.Concrete.EfCore
             context.Update(entity);
             await context.SaveChangesAsync();
         }
+
+        public async Task UpdateIsApprovedAsync(Product product)
+        {
+            if (product.IsApproved)
+            {
+                product.IsApproved = false;
+            }
+            else
+            {
+                product.IsApproved = true;
+            }
+            context.Entry(product).State = EntityState.Modified;
+            await context.SaveChangesAsync();
+        }
+
+        public async Task UpdateIsHomeAsync(Product product)
+        {
+            if (product.IsHome)
+            {
+                product.IsHome = false;
+            }
+            else
+            {
+                product.IsHome = true;
+            };
+            context.Entry(product).State = EntityState.Modified;   //context.Update(product);
+            await context.SaveChangesAsync();
+        }
+       
+
     }
 }

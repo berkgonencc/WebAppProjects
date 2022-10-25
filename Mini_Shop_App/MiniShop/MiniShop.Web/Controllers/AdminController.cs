@@ -20,7 +20,7 @@ namespace MiniShop.Web.Controllers
 
         public async Task<IActionResult> ProductList()
         {
-            var products = await _productService.GetAllAsync();
+            var products = await _productService.GetAllProductsAsync();
             return View(products);
         }
         [HttpGet]
@@ -110,7 +110,64 @@ namespace MiniShop.Web.Controllers
                 await _productService.UpdateAsync(product, categoryIds);
                 return RedirectToAction("ProductList");
             }
+            if (file == null)
+            {
+                Product product = await _productService.GetByIdAsync(productModel.Id);
+                if (product == null)
+                {
+                    return NotFound();
+                }
+                productModel.ImageUrl = product.ImageUrl;
+
+            }
+            if (categoryIds.Length == 0)
+            {
+                ViewBag.CategoryErrorMessage = "Please choose a category!";
+            }
+            else
+            {
+                productModel.SelectedCategories = categoryIds.Select(catId => new Category()
+                {
+                    Id = catId
+                }).ToList();
+            }
+            ViewBag.Categories = await _categoryService.GetAllAsync();
             return View(productModel);
+        }
+        public async Task<IActionResult> UpdateIsHome(int id)
+        {
+            Product product = await _productService.GetByIdAsync(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            await _productService.UpdateIsHomeAsync(product);
+            return RedirectToAction("ProductList");
+        }
+        public async Task<IActionResult> UpdateIsApproved(int id)
+        {
+            Product product = await _productService.GetByIdAsync(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            await _productService.UpdateIsApprovedAsync(product);
+            return RedirectToAction("ProductList");
+        }
+        public async Task<IActionResult> ProductDelete(int id)
+        {
+            Product product = await _productService.GetByIdAsync(id);
+            if (product==null)
+            {
+                return NotFound();
+            }
+            await _productService.IsDeleteAsync(product);
+            return RedirectToAction("ProductList");
+        }
+        public async Task<IActionResult> ShowDeletedProducts()
+        {
+            List<Product> products = await _productService.GetDeletedProducts();
+            return View("ProductList", products);
         }
     }
 }

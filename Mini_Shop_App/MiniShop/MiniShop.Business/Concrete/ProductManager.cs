@@ -38,9 +38,19 @@ namespace MiniShop.Business.Concrete
             return await _productRepository.GetAllAsync();
         }
 
+        public async Task<List<Product>> GetAllProductsAsync()
+        {
+            return await _productRepository.GetAllProductsAsync();
+        }
+
         public async Task<Product> GetByIdAsync(int id)
         {
             return await _productRepository.GetByIdAsync(id);
+        }
+
+        public async Task<List<Product>> GetDeletedProducts()
+        {
+            return await _productRepository.GetDeletedProducts();
         }
 
         public async Task<List<Product>> GetHomePageProductsAsync(string category)
@@ -58,6 +68,11 @@ namespace MiniShop.Business.Concrete
             return await _productRepository.GetProductWithCategoriesAsync(id);
         }
 
+        public async Task IsDeleteAsync(Product product)
+        {
+            await _productRepository.IsDeleteAsync(product);
+        }
+
         public void Update(Product entity)
         {
             throw new NotImplementedException();
@@ -66,6 +81,16 @@ namespace MiniShop.Business.Concrete
         public async Task UpdateAsync(Product product, int[] categoryIds)
         {
             await _productRepository.UpdateAsync(product, categoryIds);
+        }
+
+        public async Task UpdateIsApprovedAsync(Product product)
+        {
+            await _productRepository.UpdateIsApprovedAsync(product);
+        }
+
+        public async Task UpdateIsHomeAsync(Product product)
+        {
+            await _productRepository.UpdateIsHomeAsync(product);
         }
     }
 }
