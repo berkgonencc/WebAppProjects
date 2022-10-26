@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MiniShop.Business.Abstract;
 using MiniShop.Core;
 using MiniShop.Entity;
@@ -6,12 +7,11 @@ using MiniShop.Web.Models;
 
 namespace MiniShop.Web.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private readonly IProductService _productService;
         private readonly ICategoryService _categoryService;
-
-
         public AdminController(IProductService productService, ICategoryService categoryService)
         {
             _productService = productService;
@@ -20,7 +20,7 @@ namespace MiniShop.Web.Controllers
 
         public async Task<IActionResult> ProductList()
         {
-            var products = await _productService.GetAllProductsAsync();
+            List<Product> products = await _productService.GetAllProductsAsync();
             return View(products);
         }
         [HttpGet]
@@ -46,6 +46,7 @@ namespace MiniShop.Web.Controllers
                     IsHome = productModel.IsHome
                 };
                 await _productService.CreateAsync(product, categoryIds);
+                TempData["Message"] = Jobs.CreateMessage("Add Product", "Product is ok!", "success");
                 return RedirectToAction("ProductList");
             }
             if (categoryIds.Length == 0)
@@ -167,7 +168,17 @@ namespace MiniShop.Web.Controllers
         public async Task<IActionResult> ShowDeletedProducts()
         {
             List<Product> products = await _productService.GetDeletedProducts();
-            return View("ProductList", products);
+            return View(products);
+        }
+        public async Task<IActionResult> ProductUndo(int id)
+        {
+            Product product = await _productService.GetByIdAsync(id);
+            if (product==null)
+            {
+                return NotFound();
+            }
+            await _productService.IsDeleteAsync(product);
+            return RedirectToAction("ProductList");
         }
     }
 }

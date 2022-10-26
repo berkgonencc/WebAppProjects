@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using MiniShop.Core
+@using Newtonsoft.Json
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -14,13 +16,22 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            @if (TempData["Message"] != null)
+            {
+                AlertMessage message = JsonConvert.DeserializeObject<AlertMessage>(TempData["Message"] as String);
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-@message.AlertType"></div>
+                        </div>
+                    </div>
+            }
             @RenderBody()
         </main>
     </div>
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2022 - MiniShop.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2022 - MiniShop.Web
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

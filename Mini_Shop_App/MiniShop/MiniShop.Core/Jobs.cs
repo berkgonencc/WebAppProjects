@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,7 +22,6 @@ namespace MiniShop.Core
             }
             return randomName;
         }
-
         public static string MakeUrl(string url)
         {
             url = url.Replace("I", "i");
@@ -41,6 +42,17 @@ namespace MiniShop.Core
             url = url.Replace(" ", "-");
 
             return url;
+        }
+        public static string CreateMessage(string title, string message, string alertType)
+        {
+            AlertMessage msg = new AlertMessage()
+            {
+                Title = title,
+                Message = message,
+                AlertType = alertType
+            };
+            //TempData moves data in JSON format
+            return JsonConvert.SerializeObject(msg);
         }
     }
 }

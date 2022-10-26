@@ -85,7 +85,14 @@ namespace MiniShop.Data.Concrete.EfCore
 
         public async Task IsDeleteAsync(Product product)
         {
-            product.IsDeleted = true;
+            if (product.IsDeleted == false)
+            {
+                product.IsDeleted = true;
+            }
+            else
+            {
+                product.IsDeleted = false;
+            }
             context.Update(product);
             await context.SaveChangesAsync();
         }

@@ -1,0 +1,68 @@
+﻿@model List<Product>
+
+<h1 class="display-5 text-danger">Deleted Product List</h1>
+<hr />
+<div>
+
+    <a class="btn btn-sm btn-success" asp-controller="Admin" asp-action="ProductList">Return Product List</a>
+</div>
+<hr />
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Image</th>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Is Home?</th>
+            <th scope="col">Is Approved?</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/images/@product.ImageUrl" width="50" />
+                </td>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.Price</td>
+                <td>
+                    <form id="isHomeForm_@product.Id"
+                      asp-controller="Admin"
+                      asp-action="UpdateIsHome"
+                      asp-route-id=@product.Id
+                      method="post">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" onchange="document.getElementById('isHomeForm_@product.Id').submit()" id="isHome_@product.Id" name="isHome" @(product.IsHome ? "checked" : "")>
+                            <label class="form-check-label" for="isHome"></label>
+                        </div>
+                    </form>
+                </td>
+                <td>
+                    <form id="isApprovedForm_@product.Id"
+                      asp-controller="Admin"
+                      asp-action="UpdateIsApproved"
+                      asp-route-id=@product.Id
+                      method="post">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" name="isHome" onchange="document.getElementById('isApprovedForm_@product.Id').submit()" id="isApprovedForm_@product.Id" @(product.IsApproved ? "checked" : "")>
+                            <label class="form-check-label" for="isApproved"></label>
+                        </div>
+                    </form>
+                </td>
+                <td>
+                     <a asp-controller="Admin"
+                   asp-action="ProductUndo"
+                   asp-route-id=@product.Id
+                   class="btn btn-sm btn-success">
+                        Undo
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
