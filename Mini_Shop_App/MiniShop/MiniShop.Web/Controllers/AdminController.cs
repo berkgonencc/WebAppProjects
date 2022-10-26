@@ -46,7 +46,7 @@ namespace MiniShop.Web.Controllers
                     IsHome = productModel.IsHome
                 };
                 await _productService.CreateAsync(product, categoryIds);
-                TempData["Message"] = Jobs.CreateMessage("Add Product", "Product is ok!", "success");
+                TempData["Message"] = Jobs.CreateMessage("Congrats!", "Product is successfully created!", "success");
                 return RedirectToAction("ProductList");
             }
             if (categoryIds.Length == 0)
@@ -109,6 +109,7 @@ namespace MiniShop.Web.Controllers
                     product.ImageUrl = productModel.ImageUrl;
                 }
                 await _productService.UpdateAsync(product, categoryIds);
+                TempData["Message"] = Jobs.CreateMessage("Congrats!", "Product is successfully updated.", "warning");
                 return RedirectToAction("ProductList");
             }
             if (file == null)

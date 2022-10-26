@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using MiniShop.Core;
 using MiniShop.Web.Identity;
 using MiniShop.Web.Models;
 
@@ -37,6 +38,7 @@ namespace MiniShop.Web.Controllers
             if (result.Succeeded)
             {
                 //Token creation codes will come for verification by email.
+                TempData["Message"] = Jobs.CreateMessage("Congratulations!", "Your registration has been completed successfully.", "primary");
                 return RedirectToAction("Login", "Account");
             }
             return View();
