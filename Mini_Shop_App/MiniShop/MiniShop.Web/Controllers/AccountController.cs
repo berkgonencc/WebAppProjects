@@ -24,7 +24,7 @@ namespace MiniShop.Web.Controllers
         public async Task<IActionResult> Register(RegisterModel registerModel)
         {
             if (!ModelState.IsValid)
-            {
+            {   
                 return View(registerModel);
             }
             User user = new User()
@@ -41,6 +41,7 @@ namespace MiniShop.Web.Controllers
                 TempData["Message"] = Jobs.CreateMessage("Congratulations!", "Your registration has been completed successfully.", "primary");
                 return RedirectToAction("Login", "Account");
             }
+            TempData["Message"] = Jobs.CreateMessage("Registiration Failed!", "Username or Email Address already taken!", "danger");
             return View();
         }
         public IActionResult Login(string returnUrl = null)
