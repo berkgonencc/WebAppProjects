@@ -2,6 +2,7 @@
 ### 1. MiniShop Project:
 - Generic Repository Design Pattern is used in this project
 - Built with Microsoft.EntityFrameworkCore
+- Mainly used Bootstrap for Frontend Design
 
 ### 2. Bus Ticket Reservation Project:
 - Underconstruction..
