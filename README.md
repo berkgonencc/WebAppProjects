@@ -6,7 +6,7 @@
 - The user can register, login and logout With the ASP Net Core Identity package. 
 - Admin can create, delete or update products, categories and user roles. Also, Admin can assign users to any role.
 - It is built using SOLID Principles.
-- 
+
 ##### Technologies Used: 
 - C# .Net, ASP Net Core(MVC), ASP Net Core Identity, EF Core CodeFirst, Bootstrap, Javascript, CSS3, HTML5, SQLite , Generic Repository Pattern, Layered Architecture, OOP
 
