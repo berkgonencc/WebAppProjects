@@ -1,0 +1,242 @@
+﻿@model PurchaseModel
+
+<form asp-controller="Home" asp-action="Purchase" method="post" onsubmit="return checkForm(this);">
+    <input type="hidden" name="id" value="@Model.Trip.TripId" />
+    <div class="row">
+        <div class="col-md-8">
+            <div class="row rounded-3 bg-secondary bg-opacity-10 m-4 border ps-4">
+                <h4 class="font-monospace mt-3 mb-4"><i class="bi bi-1-square"></i> Passengers</h4>
+                <div class="row col-md-6">
+                    <div class="form-label">
+                        <label asp-for="Fname"></label>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" asp-for="Fname" class="form-control" />
+                    </div>
+                    <span asp-validation-for="Fname" class="text-danger"></span>
+                </div>
+                <div class="row col-md-6">
+                    <div class="form-label">
+                        <label asp-for="Lname"></label>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" asp-for="Lname" class="form-control" />
+                    </div>
+                    <span asp-validation-for="Lname" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row rounded-3 bg-secondary bg-opacity-10 m-4 border ps-4">
+                <h4 class="font-monospace mt-3 mb-4"><i class="bi bi-2-square"></i> Contact</h4>
+                <div class="row col-md-6">
+                    <div class="form-label">
+                        <label asp-for="Email"></label>
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" asp-for="Email" class="form-control" />
+                    </div>
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="row col-md-6">
+                    <div class="form-label">
+                        <label asp-for="PhoneNumber"></label>
+                    </div>
+                    <div class="mb-3">
+                        <input type="tel" asp-for="PhoneNumber" class="form-control" />
+                    </div>
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row rounded-3 bg-secondary bg-opacity-10 m-4 border ps-4">
+                <h4 class="font-monospace mt-3 mb-4"><i class="bi bi-3-square"></i> Seat Reservation</h4>
+                <div class="row">
+                    <div class="list-group pe-4 pb-4 ps-2">
+                        <!-- Button trigger modal for seat selection -->
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#selectSeat">
+                            <div class="d-flex">
+                                <div class="col-md-3 ps-4">
+                                    <img src="https://img.icons8.com/emoji/96/null/seat.png" />
+                                </div>
+                                <div class="col-md-9">
+                                    <h5 class="pt-3 font-monospace">Select your seat</h5>
+                                    <small class="font-monospace">Included in the price!</small>
+                                </div>
+                            </div>
+                        </button>
+                        <!-- Modal for seat selection-->
+                        <div class="modal fade" id="selectSeat" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5 font-monospace ps-4 ms-4" id="staticBackdropLabel">Choose Your Seat</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="d-flex ps-4 ms-4 font-monospace">
+                                            <div class="bg-primary bg-opacity-25" style="width:20px;height:20px"></div>
+                                            <h6 class="text-primary text-opacity-50 ms-2">Booked</h6>
+                                        </div>
+                                        <div class="d-flex ps-4 ms-4 mb-4 font-monospace">
+                                            <div class="bg-primary bg-opacity-75" style="width:20px;height:20px"></div>
+                                            <h6 class="text-primary ms-2 text-opacity-75">Available</h6>
+                                        </div>
+                                        <div class="input-group-text border border-secondary ms-5 me-5 bg-secondary bg-gradient bg-opacity-10">
+                                            <div class="row">
+                                                <div class="row ms-4 mb-4 ps-4 pb-4">
+                                                    <img src="~/images/driver.png" style="width:80px;" />
+                                                </div>
+                                                @for (int i = 1; i <= Model.Trip.Bus.TotalSeats; i++)
+                                                {
+
+                                                    if (i == 1)
+                                                    {
+                                                        <div class="row">
+                                                        </div>
+                                                        <hr />
+                                                    }
+                                                    if (i == 3 || i == 6 || i == 9 || i == 12 || i == 15 || i == 18 || i == 21 || i == 24 || i == 27 || i == 30 || i == 33 || i == 36 || i == 39)
+                                                    {
+                                                        <div class="col-5">
+                                                            <img src="~/images/line.png" />
+                                                        </div>
+                                                    }
+                                                    <div class="col-2">
+                                                        <input class="form-check-input bg-primary bg-opacity-75" type="radio" style="font-size:35px; border:1px solid transparent; padding:0.375rem 0.75rem ;border-radius:0.25rem;" value="@i" id="seats" name="seatNumber"
+                                                           @if (Model.SelectedSeats != null)
+                                                           {
+                                                           @((Model.SelectedSeats.Any(s=>s.SeatNo == i) ? ("disabled") : ""))
+                                                           }>
+                                                        <label class="form-check-label mt-3" for="seats"><small>@i</small></label>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer font-monospace">
+                                        <button type="button" class="btn text-white" data-bs-dismiss="modal" style="background-color:#6D9886">Select</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row rounded-3 bg-secondary bg-opacity-10 m-4 border ps-4">
+                <h4 class="font-monospace mt-3 mb-4"><i class="bi bi-4-square"></i> Card Details</h4>
+                <div class="row col-md-6">
+                    <div class="form-label">
+                        <label asp-for="CardHolderName"></label>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" asp-for="CardHolderName" class="form-control" />
+                    </div>
+                    <span asp-validation-for="CardHolderName" class="text-danger"></span>
+                </div>
+                <div class="row col-md-6">
+                    <div class="form-label">
+                        <label asp-for="CardNumber"></label>
+                    </div>
+                    <div class="mb-3">
+                        <input type="number" asp-for="CardNumber" class="form-control" />
+                    </div>
+                    <span asp-validation-for="CardNumber" class="text-danger"></span>
+                </div>
+                <div class="row col-md-2">
+                    <div class="form-label">
+                        <label asp-for="ExpirationMonth"></label>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" asp-for="ExpirationMonth" class="form-control" />
+                    </div>
+                    <span asp-validation-for="ExpirationMonth" class="text-danger"></span>
+                </div>
+                <div class="row col-md-2">
+                    <div class="form-label">
+                        <label asp-for="ExpirationYear"></label>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" asp-for="ExpirationYear" class="form-control" />
+                    </div>
+                    <span asp-validation-for="ExpirationYear" class="text-danger"></span>
+                </div>
+                <div class="row col-md-2">
+                    <div class="form-label">
+                        <label asp-for="Cvc"></label>
+                    </div>
+                    <div class="mb-3">
+                        <input type="number" asp-for="Cvc" class="form-control" />
+                    </div>
+                    <span asp-validation-for="Cvc" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 pe-4">
+            <div class="rounded-3 bg-secondary bg-opacity-10 m-4 border p-4">
+                <div class="row text-center">
+                    <div class="col-md-2">
+                        <img src="~/images/booking.png" />
+                    </div>
+                    <div class="col-md-10">
+                        <h4 class="font-monospace mt-3 mb-4">Your Booking</h4>
+                    </div>
+                </div>
+                <hr />
+                <div class="row text-center mt-4 font-monospace">
+                    <h5>@Model.Trip.DepartureCity.CityName</h5>
+                    <i class="bi bi-arrow-down"></i>
+                    <h5>@Model.Trip.ArrivalCity.CityName</h5>
+                </div>
+                <div class="row font-monospace d-flex justify-content-beetween mt-4">
+                    <div class="col mt-2">
+                        <h6 class="">Departure Date:</h6>
+                    </div>
+                    <div class="col mt-2">
+                        <h6 class="text-end">@Model.Trip.ReservationDate</h6>
+                    </div>
+                </div>
+                <div class="row font-monospace d-flex justify-content-beetween">
+                    <div class="col">
+                        <h6 class="">Departure Time:</h6>
+                    </div>
+                    <div class="col">
+                        <h6 class="text-end">@Model.Trip.DepartureTime</h6>
+                    </div>
+                </div>
+                <hr />
+                <div class="row font-monospace d-flex justify-content-beetween">
+                    <div class="col">
+                        <h6 class="mt-2"><strong>Total</strong>(incl. VAT):</h6>
+                    </div>
+                    <div class="col">
+                        <h4 class="mt-2 text-end">₺@Model.Trip.TicketPrice</h4>
+                    </div>
+                </div>
+                <hr />
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="privacyPolicy" required name="terms">
+                    <label class="form-check-label mb-3 font-monospace" for="privacyPolicy">I declare to have read the Privacy Policy and I agree to the T&C of Booking and T&C of Carriage.</label>
+                </div>
+                <button type="submit" class="btn w-100 font-monospace text-white" style="background-color:#DD9866">Purchase</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+    <script>
+
+        function checkForm(form) {           
+            if (!form.terms.checked) {
+                alert("Please indicate that you accept the Terms and Conditions");
+                form.terms.focus();
+                return false;
+            }
+            return true;
+        }
+
+    </script>
+  }
+
+
+

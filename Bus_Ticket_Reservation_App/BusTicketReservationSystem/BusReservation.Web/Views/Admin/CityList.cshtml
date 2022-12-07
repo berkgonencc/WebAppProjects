@@ -1,0 +1,62 @@
+﻿@model List<City>
+@section Styles{
+    @await Html.PartialAsync("_DataTablesCSSPartial")
+}
+@section Scripts{
+    @await Html.PartialAsync("_DataTablesScriptsPartial")
+}
+
+<h1 class="display-6 font-monospace mt-3 text-dark text-opacity-50 text-center">City List</h1>
+<p class="placeholder-wave mt-2" style="color:#DD9866">
+    <span class="placeholder col-12"></span>
+</p>
+<table class="table table-striped table-hover table-sm font-monospace" id="myTable">
+    <thead>
+        <tr>
+            <th scope="col" class="text-center">CityId</th>
+            <th scope="col" class="text-center">CityName</th>
+            <th scope="col" class="text-center">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="text-center">
+                <th scope="row">@item.CityId</th>
+                <td>@item.CityName</td>
+                <td>
+                    <a asp-controller="Admin" asp-action="CityEdit" asp-route-id=@item.CityId class="btn btn-sm text-white" style="background-color:#6D9886">Edit</a>
+                    <!-- Button delete modal -->
+                    <button type="button" class="btn btn-sm text-white" style="background-color:#810000" data-bs-toggle="modal" data-bs-target="#deleteModal_@item.CityId">
+                        Delete
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="deleteModal_@item.CityId" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header text-danger">
+                                    <h1 class="modal-title fs-5" style="color:#810000" id="deleteModalLabel">Are you sure you want to delete this item <strong>permanently</strong>?</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <h6 class="display-6 text-center">@item.CityName</h6>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                    <a asp-controller="Admin" asp-action="CityDelete" asp-route-id=@item.CityId type="button" class="btn text-white" style="background-color:#810000">Yes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<hr />
+<div class="font-monospace mb-4 text-center">
+    <a asp-controller="Admin" asp-action="CityCreate" class="btn text-white" style="background-color:#DD9866; width:450px">
+        Add New City
+    </a>
+</div>

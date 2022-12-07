@@ -1,0 +1,45 @@
+﻿<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+<style>
+    #map {
+        height: 500px;
+    }
+</style>
+<script>
+    var map = L.map('map').setView([51.5, -0.09], 13);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    L.marker([52.37, 4.89]).addTo(map).bindPopup('Amsterdam').openPopup();
+    L.marker([48.85, 2.34]).addTo(map).bindPopup('Paris').openPopup();
+    L.marker([52.48, 13.39]).addTo(map).bindPopup('Berlin').openPopup();
+    L.marker([50.078295, 14.435224]).addTo(map).bindPopup('Praha').openPopup();
+    L.marker([45.42, 9.19]).addTo(map).bindPopup('Milano').openPopup();
+    L.marker([47.42, 19.08]).addTo(map).bindPopup('Budapest').openPopup();
+    L.marker([48.14, 16.36]).addTo(map).bindPopup('Wien').openPopup();
+    L.marker([40.39, -3.68]).addTo(map).bindPopup('Madrid').openPopup();
+    L.marker([44.81, 20.45]).addTo(map).bindPopup('Belgrade').openPopup();
+    L.marker([41.00, 28.96]).addTo(map).bindPopup('Istanbul').openPopup();
+    L.marker([41.00, 28.96]).addTo(map).bindPopup('Warsav').openPopup();
+    L.marker([36.96, 35.32]).addTo(map).bindPopup('Adana').openPopup();
+    L.marker([50.843758, 4.346353]).addTo(map).bindPopup('Brussels').openPopup();
+    L.marker([59.80, 10.78]).addTo(map).bindPopup('Oslo').openPopup();
+    L.marker([59.18, 17.99]).addTo(map).bindPopup('Stockholm').openPopup();
+    L.marker([53.50, 9.99]).addTo(map).bindPopup('Hamburg').openPopup();
+    L.marker([55.65, 12.55]).addTo(map).bindPopup('Copenhagen').openPopup();
+    L.marker([38.63, -9.10]).addTo(map).bindPopup('Lisbon').openPopup();
+    L.marker([41.379385, 2.181079]).addTo(map).bindPopup('Barcelona').openPopup();
+    L.marker([51.5, -0.09]).addTo(map).bindPopup('London').openPopup();
+
+    var popup = L.popup();
+
+    function onMapClick(e) {
+        popup
+            .setLatLng(e.latlng)
+            .setContent("You clicked the map at " + e.latlng.toString())
+            .openOn(map);
+    }
+
+    map.on('click', onMapClick);
+
+</script>

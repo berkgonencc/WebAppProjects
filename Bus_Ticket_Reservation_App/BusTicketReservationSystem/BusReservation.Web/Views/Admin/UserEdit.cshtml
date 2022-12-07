@@ -1,0 +1,79 @@
+﻿@model UserModel
+
+<h1 class="font-monospace fs-2 mt-4 text-center" style="color:#6D9886">Edit User</h1>
+<p class="placeholder-wave mt-2 pe-3" style="color:#6D9886">
+    <span class="placeholder col-12"></span>
+</p>
+<form asp-controller="Admin" asp-action="UserEdit" method="post">
+    <input type="hidden" name="UserId" value=@Model.UserId />
+    <div class="row font-monospace">
+        <div class="col-md-5">
+            <div class="form-group row mb-2">
+                <div class="col-md-4">
+                    <label asp-for="FirstName" class="input-group-text" style="color:#6D9886"></label>
+                </div>
+                <div class="col-md-8 p-0">
+                    <input type="text" asp-for="FirstName" class="form-control"/>
+                </div>
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group row mb-2">
+                <div class="col-md-4">
+                    <label asp-for="LastName" class="input-group-text" style="color:#6D9886"></label>
+                </div>
+                <div class="col-md-8 p-0">
+                    <input type="text" asp-for="LastName" class="form-control" />
+                </div>
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group row mb-2">
+                <div class="col-md-4">
+                    <label asp-for="UserName" class="input-group-text" style="color:#6D9886"></label>
+                </div>
+                <div class="col-md-8 p-0">
+                    <input type="text" asp-for="UserName" class="form-control" />
+                </div>
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+           <div class="form-group row mb-2">
+                <div class="col-md-4">
+                    <label asp-for="Email" class="input-group-text" style="color:#6D9886"></label>
+                </div>
+                <div class="col-md-8 p-0">
+                    <input type="text" asp-for="Email" class="form-control" />
+                </div>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="text-center">
+                    <button class="mt-4 btn text-white" style="background-color:#DD9866; width:150px" type="submit">Save Changes</button>
+            </div>
+        </div>
+        <div class="col-md-4">
+            @foreach (var role in ViewBag.Roles)
+            {
+                <div class="form-check mt-2">
+                    <input type="checkbox"
+                       class="form-check-input"
+                       value=@role
+                       name="SelectedRoles"
+                       id=@role
+                       @{
+                       try
+                       {
+                           @(Model.SelectedRoles.Any(i=>i==role) ? "checked" : "")
+                       }
+                       catch (Exception)
+                       {
+                       }
+                       }>
+                    <label class="form-check-label">@role</label>
+                </div>
+            }
+        </div>
+    </div>
+</form>
+
+@section Scripts
+    {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

@@ -1,0 +1,101 @@
+﻿@model TripModel
+
+<h1 class="font-monospace fs-2 mt-4 text-dark text-opacity-50 text-center">Create New Journey</h1>
+<p class="placeholder-wave mt-3" style="color:#DD9866">
+    <span class="placeholder col-12"></span>
+</p>
+<form asp-controller="Admin" asp-action="TripCreate" method="post">
+    <div class="row font-monospace">
+        <div class="input-group row mt-2">
+            <div class="col-md-4">
+                <label asp-for="DepartureTime" class="input-group-text" style="color:#6D9886"></label>
+            </div>
+            <div class="col-md-8 p-0">
+                <input type="text" asp-for="DepartureTime" class="form-control" />
+            </div>
+            <span asp-validation-for="DepartureTime" class="text-danger"></span>
+        </div>
+        <div class="input-group row mt-2">
+            <div class="col-md-4">
+                <label asp-for="ReservationDate" class="input-group-text" style="color:#6D9886"></label>
+            </div>
+            <div class="col-md-8 p-0">
+                <input type="date" asp-for="ReservationDate" min="2022-01-01" max="2024-12-31" class="form-control"  style="color:#6D9886"/>
+            </div>
+            <span asp-validation-for="ReservationDate" class="text-danger"></span>
+        </div>
+        <div class="input-group row mt-2">
+            <div class="col-md-4">
+                <label asp-for="TicketPrice" class="input-group-text" style="color:#6D9886"></label>
+            </div>
+            <div class="col-md-8 p-0">
+                <input type="text" asp-for="TicketPrice" class="form-control" />
+            </div>
+            <span asp-validation-for="TicketPrice" class="text-danger"></span>
+
+        </div>
+        <div class="input-group row mt-2">
+            <div class="col-md-4">
+                <label class="input-group-text" style="color:#6D9886">Departure City</label>
+            </div>
+            <div class="col-md-8 p-0">
+                <select class="form-select" id="floatingSelect" name="departureCity" style="color:#6D9886">
+                    <option selected>Choose Departure City</option>
+                    @foreach (var city in (List<City>)ViewBag.Cities)
+                    {
+
+                        <option value=@city.CityId>@city.CityName</option>
+
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="input-group row mt-2">
+            <div class="col-md-4">
+                <label class="input-group-text" style="color:#6D9886">Arrival City</label>
+            </div>
+            <div class="col-md-8 p-0">
+                <select class="form-select" id="floatingSelect" name="arrivalCity" style="color:#6D9886">
+                    <option selected>Choose Arrival City</option>
+                    @foreach (var city in (List<City>)ViewBag.Cities)
+                    {
+
+                        <option value=@city.CityId>@city.CityName</option>
+
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="input-group row mt-2">
+            <div class="col-md-4">
+                <label asp-for="EstimatedTime" class="input-group-text" style="color:#6D9886"></label>
+            </div>
+            <div class="col-md-8 p-0">
+                <input type="text" asp-for="EstimatedTime" class="form-control" />
+            </div>
+        </div>
+        <span asp-validation-for="EstimatedTime" class="text-danger"></span>
+        <div class="input-group row mt-2">
+            <div class="col-md-4">
+                <label class="input-group-text" style="color:#6D9886">Bus Model</label>
+            </div>
+            <div class="col-md-8 p-0">
+                <select class="form-select" name="bus" style="color:#6D9886">
+                    <option selected>Choose Bus</option>
+                    @foreach (var item in (List<Bus>)ViewBag.Buses)
+                    {
+                        <option value=@item.BusId>@item.BusName</option>
+                    }
+                </select>
+            </div>
+            <span class="text-danger">@ViewBag.BusErrorMessage</span>
+        </div>
+    </div>
+
+    <div class="font-monospace text-center">
+        <button type="submit" class="mt-4 btn text-white" style="background-color:#DD9866; width:450px">Create Trip</button>
+    </div>
+</form>
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

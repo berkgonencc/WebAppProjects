@@ -1,0 +1,49 @@
+﻿@section Styles{
+    @await Html.PartialAsync("_LeafletCSSPartial")
+}
+@section Scripts{
+    @await Html.PartialAsync("_LeafletScriptsPartial")
+ 
+}
+<form asp-controller="Home" asp-action="FindBusTicket">
+    <div class="row font-monospace">
+        <div class="row mt-3 d-flex justify-content-center">
+            <div class="form-floating col ms-4">
+                <select class="form-select" id="floatingSelect" name="departureCity">
+                    <option selected>Choose Departure City</option>
+                    @foreach (var city in (List<City>)ViewBag.Cities)
+                    {
+
+                        <option value=@city.CityId>@city.CityName</option>
+
+                    }
+                </select>
+                <label for="floatingSelect"><i class="bi bi-geo-alt-fill">From</i></label>
+            </div>
+            <div class="form-floating col">
+                <select class="form-select" id="floatingSelect" name="arrivalCity">
+                    <option selected>Choose Arrival City</option>
+                    @foreach (var city in (List<City>)ViewBag.Cities)
+                    {
+
+                        <option value=@city.CityId>@city.CityName</option>
+
+                    }
+                </select>
+                <label for="floatingSelect"><i class="bi bi-geo-alt-fill">To</i></label>
+            </div>
+            <div class="col">
+                <label for="start" class="font-monospace">Departure</label>
+                <input class="font-monospace w-100 border-success" type="date" id="start" name="tripDate"
+                       value="2023-08-20"
+                       min="2022-01-01" max="2024-12-31">
+            </div>
+            <div class="col-form-label d-grid mx-auto col">
+                <button class="btn font-monospace btn-sm text-white" style="background-color:#DD9866" type="submit">Find Bus Ticket</button>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="mt-3" id="map"></div>
+
+

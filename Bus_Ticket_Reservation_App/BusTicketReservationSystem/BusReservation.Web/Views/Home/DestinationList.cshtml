@@ -1,0 +1,13 @@
+﻿@model List<City>
+<h1 class="display-6 font-monospace mt-3 text-dark text-opacity-50 text-center">All Bus Destinations</h1>
+<p class="placeholder-wave mt-2" style="color:#DD9866">
+    <span class="placeholder col-12"></span>
+</p>
+<div class="row text-dark text-opacity-50 font-monospace text-center mt-4">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-4">
+            <h2 class="fw-bolder fs-4">@item.CityName</h2>
+        </div>
+    }
+</div>

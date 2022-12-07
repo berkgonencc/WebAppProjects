@@ -1,0 +1,44 @@
+﻿@model LoginModel
+<h1 class="display-6 font-monospace mt-3 text-dark text-opacity-50 text-center">Login</h1>
+<p class="placeholder-wave mt-2" style="color:#DD9866">
+    <span class="placeholder col-12"></span>
+</p>
+<form asp-controller="Account" asp-action="Login" method="post">
+    <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="row font-monospace d-flex justify-content-center">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label class="col-form-label" asp-for="Email"></label>
+                    </div>
+                    <div class="col-md-9">
+                        <input class="form-control" asp-for="Email" />
+                    </div>
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-md-3">
+                        <label class="col-form-label" asp-for="Password"></label>
+                    </div>
+                    <div class="col-md-9">
+                        <input class="form-control" asp-for="Password" />
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-7">
+                        <input class="form-check-input mt-2" type="checkbox" asp-for="Remember" />
+                        <label class="col-form-label">Remember Me</label>
+                    </div>
+                    <div class="col-md-2 mt-2">
+                        <button class="btn btn-outline-success btn-sm" type="submit" style="background-color:#DD9866; width:100px">Login</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

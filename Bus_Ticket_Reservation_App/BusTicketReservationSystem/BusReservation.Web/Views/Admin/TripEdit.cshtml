@@ -1,0 +1,117 @@
+﻿@model TripModel
+
+<h1 class="font-monospace fs-2 mt-4 text-center" style="color:#6D9886">Edit Trip</h1>
+<p class="placeholder-wave mt-2 pe-3" style="color:#6D9886">
+    <span class="placeholder col-12"></span>
+</p>
+<form asp-controller="Admin" asp-action="TripEdit" method="post">
+    <input type="hidden" name="id" value="@Model.TripId" />
+
+    <div class="row font-monospace">
+        <div class="input-group row mt-2">
+            <div class="col-md-4">
+                <label asp-for="DepartureTime" class="input-group-text"></label>
+            </div>
+            <div class="col-md-8 p-0">
+                <input type="text" asp-for="DepartureTime" class="form-control" />
+            </div>
+            <span asp-validation-for="DepartureTime" class="text-danger"></span>
+        </div>
+        <div class="input-group row mt-2">
+            <div class="col-md-4">
+                <label asp-for="ReservationDate" class="input-group-text"></label>
+            </div>
+            <div class="col-md-8 p-0">
+                <input type="date" asp-for="ReservationDate" min="2022-01-01" max="2024-12-31" class="form-control" />
+            </div>
+            <span asp-validation-for="ReservationDate" class="text-danger"></span>
+        </div>
+        <div class="input-group row mt-2">
+            <div class="col-md-4">
+                <label asp-for="TicketPrice" class="input-group-text"></label>
+            </div>
+            <div class="col-md-8 p-0">
+                <input type="text" asp-for="TicketPrice" class="form-control" />
+            </div>
+            <span asp-validation-for="TicketPrice" class="text-danger"></span>
+        </div>
+        <div class="input-group row mt-2">
+            <div class="col-md-4">
+                <label class="input-group-text">Departure City</label>
+            </div>
+            <div class="col-md-8 p-0">
+                <select class="form-select" id="floatingSelect" name="departureCity">
+                    @foreach (var city in (List<City>)ViewBag.Cities)
+                    {
+                        if (Model.DepartureCityId == city.CityId)
+                        {
+                            <option selected value=@city.CityId>@city.CityName</option>
+                        }
+                        else
+                        {
+                            <option value=@city.CityId>@city.CityName</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="input-group row mt-2">
+            <div class="col-md-4">
+                <label class="input-group-text">Arrival City</label>
+            </div>
+            <div class="col-md-8 p-0">
+                <select class="form-select" id="floatingSelect" name="arrivalCity">
+                    @foreach (var city in (List<City>)ViewBag.Cities)
+                    {
+                        if (Model.ArrivalCityId == city.CityId)
+                        {
+                            <option selected value=@city.CityId>@city.CityName</option>
+
+                        }
+                        else
+                        {
+                            <option value=@city.CityId>@city.CityName</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="input-group row mt-2">
+            <div class="col-md-4">
+                <label asp-for="EstimatedTime" class="input-group-text"></label>
+            </div>
+            <div class="col-md-8 p-0">
+                <input type="text" asp-for="EstimatedTime" class="form-control" />
+            </div>
+        </div>
+        <span asp-validation-for="EstimatedTime" class="text-danger"></span>
+        <div class="input-group row mt-2">
+            <div class="col-md-4">
+                <label class="input-group-text">Bus Model</label>
+            </div>
+            <div class="col-md-8 p-0">
+                <select class="form-select" name="bus">
+                    @foreach (var item in (List<Bus>)ViewBag.Buses)
+                    {
+                        if (Model.BusId == item.BusId)
+                        {
+                            <option selected value=@item.BusId>@item.BusName</option>
+
+                        }
+                        else
+                        {
+                            <option value=@item.BusId>@item.BusName</option>
+                        }
+                    }
+                </select>
+            </div>
+            <span class="text-danger">@ViewBag.BusErrorMessage</span>
+        </div>
+    </div>
+    <div class="font-monospace text-center">
+        <button type="submit" class="mt-4 btn text-white" style="background-color:#6D9886; width:450px">Save</button>
+    </div>
+</form>
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

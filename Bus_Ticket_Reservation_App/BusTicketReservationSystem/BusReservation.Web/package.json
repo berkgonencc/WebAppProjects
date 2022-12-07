@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "admin-lte": "3.2",
+    "bootstrap-icons": "^1.9.1"
+  }
+}

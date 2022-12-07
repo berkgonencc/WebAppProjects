@@ -1,0 +1,79 @@
+﻿<nav class="navbar navbar-expand-sm navbar-toggleable-sm" style="background-color:#6D9886">
+    <div class="container-fluid">
+        <img src="~/images/bus.png" class="img-fluid me-3 ms-3 " style="height:50px" />
+        <a class="navbar-brand text-white font-monospace fs-2" asp-area="" asp-controller="Home" asp-action="Index">SILKROAD</a>
+        <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+            <ul class="navbar-nav flex-grow-1">
+                <li class="nav-item dropdown font-monospace">
+                    <a class="nav-link text-white dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">Plan Your Jouney</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="DestinationList">All Destinations</a></li>
+                        <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Explore">Route Map</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Help">Help</a></li>
+
+                    </ul>
+                </li>
+            </ul>
+            @if (User.Identity.IsAuthenticated)
+            {
+                @if (User.IsInRole("Admin"))
+                {
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown font-monospace">
+                            <a class="nav-link text-white dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">Admin Panel</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Admin" asp-action="TripList">Trip List</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Admin" asp-action="CityList">City List</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Admin" asp-action="BusList">Bus List</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Admin" asp-action="UserList">Users</a></li>
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Admin" asp-action="RoleList">Roles</a></li>
+
+                            </ul>
+                        </li>              
+                    </ul>
+                   @* <a class="nav-item font-monospace">
+                        <a class="nav-link text-white" asp-area="" asp-controller="Admin" asp-action="TripList">TripList</a>
+                    </a>
+                    <a class="nav-item font-monospace">
+                        <a class="nav-link text-white" asp-area="" asp-controller="Admin" asp-action="CityList">CityList</a>
+                    </a>
+                    <a class="nav-item font-monospace">
+                        <a class="nav-link text-white" asp-area="" asp-controller="Admin" asp-action="BusList">BusList</a>
+                    </a>*@
+                   @* <a class="nav-item font-monospace">
+                        <a class="nav-link text-white" asp-area="" asp-controller="Admin" asp-action="UserList">Users</a>
+                    </a>
+                    <a class="nav-item font-monospace">
+                        <a class="nav-link text-white" asp-area="" asp-controller="Admin" asp-action="RoleList">Roles</a>
+                    </a>*@
+                }
+            }
+            @if (User.Identity.IsAuthenticated)
+            {
+                @*KullanıcıAdı*@
+                <a class="nav-item font-monospace">
+                    <a class="nav-link text-white" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+                </a>
+                <a class="nav-item font-monospace">
+                    <a class="nav-link text-white" href="#">@User.Identity.Name</a>
+                </a>
+            }
+            else
+            {
+                <a class="nav-item font-monospace">
+                    <a class="nav-link text-white" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
+                </a>
+                <a class="nav-item font-monospace">
+                    <a class="nav-link text-white" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
+                </a>
+            }
+        </div>
+    </div>
+</nav>
+

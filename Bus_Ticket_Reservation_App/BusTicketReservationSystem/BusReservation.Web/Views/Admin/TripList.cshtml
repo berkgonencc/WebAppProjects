@@ -1,0 +1,97 @@
+﻿@model List<Trip>
+@section Styles{
+    @await Html.PartialAsync("_DataTablesCSSPartial")
+}
+@section Scripts{
+    @await Html.PartialAsync("_DataTablesScriptsPartial")
+}
+
+<h1 class="display-6 font-monospace mt-3 text-dark text-opacity-50 text-center">Travel List</h1>
+<p class="placeholder-wave mt-2" style="color:#DD9866">
+    <span class="placeholder col-12"></span>
+</p>
+<table class="table table-striped table-hover table-sm font-monospace" id="myTable">
+    <thead>
+        <tr>
+            <th scope="col" class="text-center">Id</th>
+            <th scope="col" class="text-center">Departure Time</th>
+            <th scope="col" class="text-center">Reservation Date</th>
+            <th scope="col" class="text-center">Ticket Price (₺)</th>
+            <th scope="col" class="text-center">Departure City</th>
+            <th scope="col" class="text-center">Arrival City</th>
+            <th scope="col" class="text-center">Estimated Time (hrs)</th>
+            <th scope="col" class="text-center">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="text-center">
+                <th scope="row">@item.TripId</th>
+                <td>@item.DepartureTime</td>
+                <td>@item.ReservationDate</td>
+                <td>@item.TicketPrice</td>
+                <td>@item.DepartureCity.CityName</td>
+                <td>@item.ArrivalCity.CityName</td>
+                <td>@item.EstimatedTime</td>
+                <td>
+                    <a asp-controller="Admin" asp-action="TripEdit" asp-route-id=@item.TripId class="btn btn-sm text-white" style="background-color:#6D9886">Edit</a>
+                    <!-- Button delete modal -->
+                    <button type="button" class="btn btn-sm text-white" style="background-color:#810000" data-bs-toggle="modal" data-bs-target="#deleteModal_@item.TripId">
+                        Delete
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="deleteModal_@item.TripId" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content text-center">
+                                <div class="modal-header text-danger">
+                                    <h1 class="modal-title fs-5" style="color:#810000" id="deleteModalLabel">Are you sure you want to delete this item <strong>permanently</strong>?</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body text-center">                                  
+                                    <div class="d-flex justify-content-center mt-4">
+                                        <div class="col">
+                                            <img src="~/images/booking.png" />
+                                        </div>
+                                        <div class="col">
+                                            <h5>@item.DepartureCity.CityName</h5>
+                                            <i class="bi bi-arrow-down"></i>
+                                            <h5>@item.ArrivalCity.CityName</h5>
+                                        </div>                                        
+                                    </div>
+                                    <div class="row d-flex justify-content-beetween mt-4">
+                                        <div class="col mt-2">
+                                            <h6 class="">Departure Date:</h6>
+                                        </div>
+                                        <div class="col mt-2">
+                                            <h6 class="">@item.ReservationDate</h6>
+                                        </div>
+                                    </div>
+                                    <div class="row d-flex justify-content-beetween">
+                                        <div class="col">
+                                            <h6 class="">Departure Time:</h6>
+                                        </div>
+                                        <div class="col">
+                                            <h6 class="">@item.DepartureTime</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                    <a asp-controller="Admin" asp-action="TripDelete" asp-route-id=@item.TripId type="button" class="btn text-white" style="background-color:#810000">Yes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<hr />
+<div class="font-monospace mb-4 text-center">
+    <a asp-controller="Admin" asp-action="TripCreate" class="btn text-white" style="background-color:#DD9866; width:450px">
+        Create New Trip
+    </a>
+</div>
