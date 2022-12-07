@@ -33,8 +33,8 @@
 - SQlite has been used as database so migration or database update commend is not required. 
 - After all, you can run the project locally in your browser. Also, note that initially, admin user is added manually in the database and is assigned the Admin role.
 
--* Admin Login: (email: "admin@gmail.com", password: "Qwe123.")
--* User Login: (email: "user@gmail.com", password: "Qwe123.")
+- Admin Login: (email: "admin@gmail.com", password: "Qwe123.")
+- User Login: (email: "user@gmail.com", password: "Qwe123.")
 
 
 
