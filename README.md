@@ -17,7 +17,7 @@
 - SQlite has been used as database so migration or database update commend is not required. 
 - After all, you can run the project locally in your browser. Also, note that initially, admin user is added manually in the database and is assigned the Admin role.(email: "deneme@gmail.com", password: "Qwe123.")
 
-
+*******************************************************************************************************************************************
 ### 2. Bus Ticket Booking Project:
 - The database is created with the EF Core CodeFirst and Dependency Injection software design approaches.
 - The user can register, login and logout With the ASP Net Core Identity package. 
