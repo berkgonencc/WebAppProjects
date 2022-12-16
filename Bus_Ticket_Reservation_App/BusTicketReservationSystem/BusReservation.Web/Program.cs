@@ -78,11 +78,7 @@ app.UseAuthentication();
 app.UseRouting();
 
 app.UseAuthorization();
-app.MapControllerRoute(
-    name: "search",
-    defaults: new { controller = "Home", action = "Search" },
-    pattern: "search"
-    );
+
 app.MapControllerRoute(
     name: "purchase",
     defaults: new { controller = "Home", action = "Purchase" },
