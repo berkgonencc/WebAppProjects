@@ -35,43 +35,28 @@
                                 <li><a class="dropdown-item" asp-area="" asp-controller="Admin" asp-action="RoleList">Roles</a></li>
 
                             </ul>
-                        </li>              
+                        </li>
                     </ul>
-                   @* <a class="nav-item font-monospace">
-                        <a class="nav-link text-white" asp-area="" asp-controller="Admin" asp-action="TripList">TripList</a>
-                    </a>
-                    <a class="nav-item font-monospace">
-                        <a class="nav-link text-white" asp-area="" asp-controller="Admin" asp-action="CityList">CityList</a>
-                    </a>
-                    <a class="nav-item font-monospace">
-                        <a class="nav-link text-white" asp-area="" asp-controller="Admin" asp-action="BusList">BusList</a>
-                    </a>*@
-                   @* <a class="nav-item font-monospace">
-                        <a class="nav-link text-white" asp-area="" asp-controller="Admin" asp-action="UserList">Users</a>
-                    </a>
-                    <a class="nav-item font-monospace">
-                        <a class="nav-link text-white" asp-area="" asp-controller="Admin" asp-action="RoleList">Roles</a>
-                    </a>*@
                 }
             }
             @if (User.Identity.IsAuthenticated)
             {
                 @*KullanıcıAdı*@
-                <a class="nav-item font-monospace">
+                <div class="nav-item font-monospace">
                     <a class="nav-link text-white" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
-                </a>
-                <a class="nav-item font-monospace">
+                </div>
+                <div class="nav-item font-monospace">
                     <a class="nav-link text-white" href="#">@User.Identity.Name</a>
-                </a>
+                </div>
             }
             else
             {
-                <a class="nav-item font-monospace">
+                <div class="nav-item font-monospace">
                     <a class="nav-link text-white" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
-                </a>
-                <a class="nav-item font-monospace">
+                </div>
+                <div class="nav-item font-monospace">
                     <a class="nav-link text-white" asp-area="" asp-controller="Account" asp-action="Register">Register</a>
-                </a>
+                </div>
             }
         </div>
     </div>
