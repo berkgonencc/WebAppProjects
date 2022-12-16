@@ -37,7 +37,6 @@ namespace BusReservation.Web.Controllers
             var result = await _userManager.CreateAsync(user, registerModel.Password);
             if (result.Succeeded)
             {
-                //Email Doğrulama işlemi için gerekli token kodları
                 return RedirectToAction("Login", "Account");
             }
             return View();
@@ -58,7 +57,7 @@ namespace BusReservation.Web.Controllers
             var user = await _userManager.FindByEmailAsync(loginModel.Email);
             if (user == null)
             {
-                ModelState.AddModelError("", "Kulanıcı adı veya şifre hatalı!");
+                ModelState.AddModelError("", "Username or password is incorrect!");
                 return View(loginModel);
             }
             await _signInManager.SignOutAsync();
@@ -67,7 +66,7 @@ namespace BusReservation.Web.Controllers
             {
                 return Redirect(loginModel.ReturnUrl ?? "~/");
             }
-            ModelState.AddModelError("", "şifre hatalı!");
+            ModelState.AddModelError("", "Username or password is incorrect!");
             return View();
         }
         public async Task<IActionResult> Logout()
