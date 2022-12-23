@@ -28,14 +28,14 @@ namespace BlogApp.Business.Concrete
             throw new NotImplementedException();
         }
 
-        public Task<List<Category>> GetAll()
+        public async Task<List<Category>> GetAll()
         {
-            throw new NotImplementedException();
+            return await _categoryRepository.GetAll();
         }
 
-        public Task<Category> GetById(int id)
+        public async Task<Category> GetById(int id)
         {
-            throw new NotImplementedException();
+            return await _categoryRepository.GetById(id);
         }
 
         public Task UpdateAsync(Category entity)

@@ -40,6 +40,7 @@ namespace BlogApp.Data.Migrations
                     PostContent = table.Column<string>(type: "TEXT", nullable: true),
                     Slug = table.Column<string>(type: "TEXT", nullable: true),
                     ImageUrl = table.Column<string>(type: "TEXT", nullable: true),
+                    LikeNumber = table.Column<int>(type: "INTEGER", nullable: false),
                     IsDeleted = table.Column<bool>(type: "INTEGER", nullable: false),
                     IsPublished = table.Column<bool>(type: "INTEGER", nullable: false),
                     CreatedOn = table.Column<DateTime>(type: "TEXT", nullable: false),
@@ -129,63 +130,63 @@ namespace BlogApp.Data.Migrations
 
             migrationBuilder.InsertData(
                 table: "Posts",
-                columns: new[] { "Id", "CreatedOn", "ImageUrl", "IsDeleted", "IsPublished", "LastModifiedOn", "PostContent", "PublishedOn", "Slug", "Summary", "Title" },
-                values: new object[] { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "1.png", false, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "lorem-ipsum-dolor", "Lorem ipsum dolor sit amet.", "Lorem ipsum dolor." });
+                columns: new[] { "Id", "CreatedOn", "ImageUrl", "IsDeleted", "IsPublished", "LastModifiedOn", "LikeNumber", "PostContent", "PublishedOn", "Slug", "Summary", "Title" },
+                values: new object[] { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "1.png", false, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "lorem-ipsum-dolor", "Lorem ipsum dolor sit amet.", "Lorem ipsum dolor." });
 
             migrationBuilder.InsertData(
                 table: "Posts",
-                columns: new[] { "Id", "CreatedOn", "ImageUrl", "IsDeleted", "IsPublished", "LastModifiedOn", "PostContent", "PublishedOn", "Slug", "Summary", "Title" },
-                values: new object[] { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "2.png", false, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "lorem-ipsum-dolor", "Lorem ipsum dolor sit amet.", "Lorem ipsum dolor." });
+                columns: new[] { "Id", "CreatedOn", "ImageUrl", "IsDeleted", "IsPublished", "LastModifiedOn", "LikeNumber", "PostContent", "PublishedOn", "Slug", "Summary", "Title" },
+                values: new object[] { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "2.png", false, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 5, "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "lorem-ipsum-dolor", "Lorem ipsum dolor sit amet.", "Lorem ipsum dolor." });
 
             migrationBuilder.InsertData(
                 table: "Posts",
-                columns: new[] { "Id", "CreatedOn", "ImageUrl", "IsDeleted", "IsPublished", "LastModifiedOn", "PostContent", "PublishedOn", "Slug", "Summary", "Title" },
-                values: new object[] { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "3.png", false, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "lorem-ipsum-dolor", "Lorem ipsum dolor sit amet.", "Lorem ipsum dolor." });
+                columns: new[] { "Id", "CreatedOn", "ImageUrl", "IsDeleted", "IsPublished", "LastModifiedOn", "LikeNumber", "PostContent", "PublishedOn", "Slug", "Summary", "Title" },
+                values: new object[] { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "3.png", false, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 11, "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "lorem-ipsum-dolor", "Lorem ipsum dolor sit amet.", "Lorem ipsum dolor." });
 
             migrationBuilder.InsertData(
                 table: "Posts",
-                columns: new[] { "Id", "CreatedOn", "ImageUrl", "IsDeleted", "IsPublished", "LastModifiedOn", "PostContent", "PublishedOn", "Slug", "Summary", "Title" },
-                values: new object[] { 4, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "4.png", false, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "lorem-ipsum-dolor", "Lorem ipsum dolor sit amet.", "Lorem ipsum dolor." });
+                columns: new[] { "Id", "CreatedOn", "ImageUrl", "IsDeleted", "IsPublished", "LastModifiedOn", "LikeNumber", "PostContent", "PublishedOn", "Slug", "Summary", "Title" },
+                values: new object[] { 4, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "4.png", false, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 21, "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "lorem-ipsum-dolor", "Lorem ipsum dolor sit amet.", "Lorem ipsum dolor." });
 
             migrationBuilder.InsertData(
                 table: "Posts",
-                columns: new[] { "Id", "CreatedOn", "ImageUrl", "IsDeleted", "IsPublished", "LastModifiedOn", "PostContent", "PublishedOn", "Slug", "Summary", "Title" },
-                values: new object[] { 5, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "5.png", false, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "lorem-ipsum-dolor", "Lorem ipsum dolor sit amet.", "Lorem ipsum dolor." });
+                columns: new[] { "Id", "CreatedOn", "ImageUrl", "IsDeleted", "IsPublished", "LastModifiedOn", "LikeNumber", "PostContent", "PublishedOn", "Slug", "Summary", "Title" },
+                values: new object[] { 5, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "5.png", false, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 13, "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "lorem-ipsum-dolor", "Lorem ipsum dolor sit amet.", "Lorem ipsum dolor." });
 
             migrationBuilder.InsertData(
                 table: "Posts",
-                columns: new[] { "Id", "CreatedOn", "ImageUrl", "IsDeleted", "IsPublished", "LastModifiedOn", "PostContent", "PublishedOn", "Slug", "Summary", "Title" },
-                values: new object[] { 6, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "6.png", false, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "lorem-ipsum-dolor", "Lorem ipsum dolor sit amet.", "Lorem ipsum dolor." });
+                columns: new[] { "Id", "CreatedOn", "ImageUrl", "IsDeleted", "IsPublished", "LastModifiedOn", "LikeNumber", "PostContent", "PublishedOn", "Slug", "Summary", "Title" },
+                values: new object[] { 6, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "6.png", false, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 14, "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "lorem-ipsum-dolor", "Lorem ipsum dolor sit amet.", "Lorem ipsum dolor." });
 
             migrationBuilder.InsertData(
                 table: "Posts",
-                columns: new[] { "Id", "CreatedOn", "ImageUrl", "IsDeleted", "IsPublished", "LastModifiedOn", "PostContent", "PublishedOn", "Slug", "Summary", "Title" },
-                values: new object[] { 7, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "7.png", false, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "lorem-ipsum-dolor", "Lorem ipsum dolor sit amet.", "Lorem ipsum dolor." });
+                columns: new[] { "Id", "CreatedOn", "ImageUrl", "IsDeleted", "IsPublished", "LastModifiedOn", "LikeNumber", "PostContent", "PublishedOn", "Slug", "Summary", "Title" },
+                values: new object[] { 7, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "7.png", false, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 15, "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "lorem-ipsum-dolor", "Lorem ipsum dolor sit amet.", "Lorem ipsum dolor." });
 
             migrationBuilder.InsertData(
                 table: "Posts",
-                columns: new[] { "Id", "CreatedOn", "ImageUrl", "IsDeleted", "IsPublished", "LastModifiedOn", "PostContent", "PublishedOn", "Slug", "Summary", "Title" },
-                values: new object[] { 8, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "8.png", false, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "lorem-ipsum-dolor", "Lorem ipsum dolor sit amet.", "Lorem ipsum dolor." });
+                columns: new[] { "Id", "CreatedOn", "ImageUrl", "IsDeleted", "IsPublished", "LastModifiedOn", "LikeNumber", "PostContent", "PublishedOn", "Slug", "Summary", "Title" },
+                values: new object[] { 8, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "8.png", false, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 12, "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "lorem-ipsum-dolor", "Lorem ipsum dolor sit amet.", "Lorem ipsum dolor." });
 
             migrationBuilder.InsertData(
                 table: "Posts",
-                columns: new[] { "Id", "CreatedOn", "ImageUrl", "IsDeleted", "IsPublished", "LastModifiedOn", "PostContent", "PublishedOn", "Slug", "Summary", "Title" },
-                values: new object[] { 9, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "9.png", false, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "lorem-ipsum-dolor", "Lorem ipsum dolor sit amet.", "Lorem ipsum dolor." });
+                columns: new[] { "Id", "CreatedOn", "ImageUrl", "IsDeleted", "IsPublished", "LastModifiedOn", "LikeNumber", "PostContent", "PublishedOn", "Slug", "Summary", "Title" },
+                values: new object[] { 9, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "9.png", false, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 50, "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "lorem-ipsum-dolor", "Lorem ipsum dolor sit amet.", "Lorem ipsum dolor." });
 
             migrationBuilder.InsertData(
                 table: "Posts",
-                columns: new[] { "Id", "CreatedOn", "ImageUrl", "IsDeleted", "IsPublished", "LastModifiedOn", "PostContent", "PublishedOn", "Slug", "Summary", "Title" },
-                values: new object[] { 10, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "10.png", false, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "lorem-ipsum-dolor", "Lorem ipsum dolor sit amet.", "Lorem ipsum dolor." });
+                columns: new[] { "Id", "CreatedOn", "ImageUrl", "IsDeleted", "IsPublished", "LastModifiedOn", "LikeNumber", "PostContent", "PublishedOn", "Slug", "Summary", "Title" },
+                values: new object[] { 10, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "10.png", false, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 31, "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "lorem-ipsum-dolor", "Lorem ipsum dolor sit amet.", "Lorem ipsum dolor." });
 
             migrationBuilder.InsertData(
                 table: "Comments",
                 columns: new[] { "Id", "CommentContent", "CreatedOn", "IsDeleted", "IsPublished", "LastModifiedOn", "ParentId", "ParentPostId", "PostedBy", "PublishedOn" },
-                values: new object[] { 1, "Lorem ipsum dolor", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[] { 1, "Lorem ipsum dolor", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.InsertData(
                 table: "Comments",
                 columns: new[] { "Id", "CommentContent", "CreatedOn", "IsDeleted", "IsPublished", "LastModifiedOn", "ParentId", "ParentPostId", "PostedBy", "PublishedOn" },
-                values: new object[] { 4, "Lorem ipsum dolor", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 2, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[] { 4, "Lorem ipsum dolor", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, 2, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.InsertData(
                 table: "Comments",
@@ -260,12 +261,12 @@ namespace BlogApp.Data.Migrations
             migrationBuilder.InsertData(
                 table: "Comments",
                 columns: new[] { "Id", "CommentContent", "CreatedOn", "IsDeleted", "IsPublished", "LastModifiedOn", "ParentId", "ParentPostId", "PostedBy", "PublishedOn" },
-                values: new object[] { 2, "Lorem ipsum dolor", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[] { 2, "Lorem ipsum dolor", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.InsertData(
                 table: "Comments",
                 columns: new[] { "Id", "CommentContent", "CreatedOn", "IsDeleted", "IsPublished", "LastModifiedOn", "ParentId", "ParentPostId", "PostedBy", "PublishedOn" },
-                values: new object[] { 3, "Lorem ipsum dolor", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
+                values: new object[] { 3, "Lorem ipsum dolor", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), false, true, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1, 1, null, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_ParentId",

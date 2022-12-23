@@ -10,7 +10,7 @@ namespace BlogApp.Data.Concrete
 {
     public class MyAppContext : DbContext
     {
-        public MyAppContext(DbContextOptions options) : base(options)
+        public MyAppContext(DbContextOptions<MyAppContext> options) : base(options)
         {
 
         }
@@ -34,16 +34,16 @@ namespace BlogApp.Data.Concrete
                 new Category() { Id = 4, Name = "Programming", Description = "Programming Category", Slug = "programming" }
                 );
             modelBuilder.Entity<Post>().HasData(
-                new Post() { Id = 1, Title = "Lorem ipsum dolor.", Summary = "Lorem ipsum dolor sit amet.", PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", Slug = "lorem-ipsum-dolor", IsPublished = true, ImageUrl = "1.png" },
-                new Post() { Id = 2, Title = "Lorem ipsum dolor.", Summary = "Lorem ipsum dolor sit amet.", PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", Slug = "lorem-ipsum-dolor", IsPublished = true, ImageUrl = "2.png" },
-                new Post() { Id = 3, Title = "Lorem ipsum dolor.", Summary = "Lorem ipsum dolor sit amet.", PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", Slug = "lorem-ipsum-dolor", IsPublished = false, ImageUrl = "3.png" },
-                new Post() { Id = 4, Title = "Lorem ipsum dolor.", Summary = "Lorem ipsum dolor sit amet.", PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", Slug = "lorem-ipsum-dolor", IsPublished = true, ImageUrl = "4.png" },
-                new Post() { Id = 5, Title = "Lorem ipsum dolor.", Summary = "Lorem ipsum dolor sit amet.", PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", Slug = "lorem-ipsum-dolor", IsPublished = true, ImageUrl = "5.png" },
-                new Post() { Id = 6, Title = "Lorem ipsum dolor.", Summary = "Lorem ipsum dolor sit amet.", PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", Slug = "lorem-ipsum-dolor", IsPublished = true, ImageUrl = "6.png" },
-                new Post() { Id = 7, Title = "Lorem ipsum dolor.", Summary = "Lorem ipsum dolor sit amet.", PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", Slug = "lorem-ipsum-dolor", IsPublished = true, ImageUrl = "7.png" },
-                new Post() { Id = 8, Title = "Lorem ipsum dolor.", Summary = "Lorem ipsum dolor sit amet.", PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", Slug = "lorem-ipsum-dolor", IsPublished = true, ImageUrl = "8.png" },
-                new Post() { Id = 9, Title = "Lorem ipsum dolor.", Summary = "Lorem ipsum dolor sit amet.", PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", Slug = "lorem-ipsum-dolor", IsPublished = true, ImageUrl = "9.png" },
-                new Post() { Id = 10, Title = "Lorem ipsum dolor.", Summary = "Lorem ipsum dolor sit amet.", PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", Slug = "lorem-ipsum-dolor", IsPublished = true, ImageUrl = "10.png" }
+                new Post() { Id = 1, Title = "Lorem ipsum dolor.", Summary = "Lorem ipsum dolor sit amet.", PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", Slug = "lorem-ipsum-dolor", IsPublished = true, ImageUrl = "1.png", LikeNumber = 1 },
+                new Post() { Id = 2, Title = "Lorem ipsum dolor.", Summary = "Lorem ipsum dolor sit amet.", PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", Slug = "lorem-ipsum-dolor", IsPublished = true, ImageUrl = "2.png", LikeNumber = 5 },
+                new Post() { Id = 3, Title = "Lorem ipsum dolor.", Summary = "Lorem ipsum dolor sit amet.", PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", Slug = "lorem-ipsum-dolor", IsPublished = false, ImageUrl = "3.png", LikeNumber = 11 },
+                new Post() { Id = 4, Title = "Lorem ipsum dolor.", Summary = "Lorem ipsum dolor sit amet.", PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", Slug = "lorem-ipsum-dolor", IsPublished = true, ImageUrl = "4.png", LikeNumber = 21 },
+                new Post() { Id = 5, Title = "Lorem ipsum dolor.", Summary = "Lorem ipsum dolor sit amet.", PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", Slug = "lorem-ipsum-dolor", IsPublished = true, ImageUrl = "5.png", LikeNumber = 13 },
+                new Post() { Id = 6, Title = "Lorem ipsum dolor.", Summary = "Lorem ipsum dolor sit amet.", PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", Slug = "lorem-ipsum-dolor", IsPublished = true, ImageUrl = "6.png", LikeNumber = 14 },
+                new Post() { Id = 7, Title = "Lorem ipsum dolor.", Summary = "Lorem ipsum dolor sit amet.", PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", Slug = "lorem-ipsum-dolor", IsPublished = true, ImageUrl = "7.png", LikeNumber = 15 },
+                new Post() { Id = 8, Title = "Lorem ipsum dolor.", Summary = "Lorem ipsum dolor sit amet.", PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", Slug = "lorem-ipsum-dolor", IsPublished = true, ImageUrl = "8.png", LikeNumber = 12 },
+                new Post() { Id = 9, Title = "Lorem ipsum dolor.", Summary = "Lorem ipsum dolor sit amet.", PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", Slug = "lorem-ipsum-dolor", IsPublished = true, ImageUrl = "9.png", LikeNumber = 50 },
+                new Post() { Id = 10, Title = "Lorem ipsum dolor.", Summary = "Lorem ipsum dolor sit amet.", PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.", Slug = "lorem-ipsum-dolor", IsPublished = true, ImageUrl = "10.png", LikeNumber = 31 }
                 );
             modelBuilder.Entity<PostCategory>().HasData(
                 new PostCategory() { PostId = 1, CategoryId = 1 },
@@ -61,11 +61,11 @@ namespace BlogApp.Data.Concrete
                 new PostCategory() { PostId = 10, CategoryId = 2 }
                 );
             modelBuilder.Entity<Comment>().HasData(
-                new Comment() { Id = 1, CommentContent = "Lorem ipsum dolor", ParentId = null, ParentPostId = 1 },
-                new Comment() { Id = 2, CommentContent = "Lorem ipsum dolor", ParentId = 1, ParentPostId = 1 },
-                new Comment() { Id = 3, CommentContent = "Lorem ipsum dolor", ParentId = 1, ParentPostId = 1 },
-                new Comment() { Id = 4, CommentContent = "Lorem ipsum dolor", ParentId = null, ParentPostId = 2 },
-                new Comment() { Id = 5, CommentContent = "Lorem ipsum dolor", ParentId = null, ParentPostId = 3 }
+                new Comment() { Id = 1, CommentContent = "Lorem ipsum dolor", ParentId = null, ParentPostId = 1, IsPublished=true },
+                new Comment() { Id = 2, CommentContent = "Lorem ipsum dolor", ParentId = 1, ParentPostId = 1, IsPublished = true },
+                new Comment() { Id = 3, CommentContent = "Lorem ipsum dolor", ParentId = 1, ParentPostId = 1, IsPublished = true },
+                new Comment() { Id = 4, CommentContent = "Lorem ipsum dolor", ParentId = null, ParentPostId = 2, IsPublished = true },
+                new Comment() { Id = 5, CommentContent = "Lorem ipsum dolor", ParentId = null, ParentPostId = 3, IsPublished = false }
 
                 );
 

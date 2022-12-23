@@ -13,6 +13,7 @@ namespace BlogApp.Entity
         public string PostContent { get; set; }
         public string Slug { get; set; }
         public string ImageUrl { get; set; }
+        public int LikeNumber { get; set; }
 
 
 

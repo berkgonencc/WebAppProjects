@@ -1,5 +1,6 @@
 ﻿using BlogApp.Data.Abstract;
 using BlogApp.Entity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,10 @@ namespace BlogApp.Data.Concrete
 
         }
         private MyAppContext context { get { return _dbContext as MyAppContext; } }
+
+        public async Task<List<Post>> GetTrendingPostsAsync()
+        {
+            return await context.Posts.Where(p => p.IsPublished == true && p.IsDeleted == false).OrderBy(p => p.LikeNumber).Take(6).ToListAsync();
+        }
     }
 }

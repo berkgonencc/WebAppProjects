@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlogApp.Web.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20221216120134_IdentityDb")]
+    [Migration("20221222125539_IdentityDb")]
     partial class IdentityDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,11 +39,9 @@ namespace BlogApp.Web.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Fname")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Lname")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("LockoutEnabled")

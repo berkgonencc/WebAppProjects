@@ -14,5 +14,7 @@ namespace BlogApp.Business.Abstract
         void Delete(Post entity);
         Task UpdateAsync(Post entity);
         Task CreateAsync(Post entity);
+        Task<List<Post>> GetTrendingPostsAsync();
+
     }
 }

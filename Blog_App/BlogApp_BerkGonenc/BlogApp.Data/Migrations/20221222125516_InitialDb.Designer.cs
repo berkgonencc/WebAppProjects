@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlogApp.Data.Migrations
 {
     [DbContext(typeof(MyAppContext))]
-    [Migration("20221216112415_InitialDb")]
+    [Migration("20221222125516_InitialDb")]
     partial class InitialDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -152,7 +152,7 @@ namespace BlogApp.Data.Migrations
                             CommentContent = "Lorem ipsum dolor",
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
-                            IsPublished = false,
+                            IsPublished = true,
                             LastModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ParentPostId = 1,
                             PublishedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -163,7 +163,7 @@ namespace BlogApp.Data.Migrations
                             CommentContent = "Lorem ipsum dolor",
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
-                            IsPublished = false,
+                            IsPublished = true,
                             LastModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ParentId = 1,
                             ParentPostId = 1,
@@ -175,7 +175,7 @@ namespace BlogApp.Data.Migrations
                             CommentContent = "Lorem ipsum dolor",
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
-                            IsPublished = false,
+                            IsPublished = true,
                             LastModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ParentId = 1,
                             ParentPostId = 1,
@@ -187,7 +187,7 @@ namespace BlogApp.Data.Migrations
                             CommentContent = "Lorem ipsum dolor",
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsDeleted = false,
-                            IsPublished = false,
+                            IsPublished = true,
                             LastModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ParentPostId = 2,
                             PublishedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
@@ -226,6 +226,9 @@ namespace BlogApp.Data.Migrations
                     b.Property<DateTime>("LastModifiedOn")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("LikeNumber")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("PostContent")
                         .HasColumnType("TEXT");
 
@@ -254,6 +257,7 @@ namespace BlogApp.Data.Migrations
                             IsDeleted = false,
                             IsPublished = true,
                             LastModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LikeNumber = 1,
                             PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.",
                             PublishedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Slug = "lorem-ipsum-dolor",
@@ -268,6 +272,7 @@ namespace BlogApp.Data.Migrations
                             IsDeleted = false,
                             IsPublished = true,
                             LastModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LikeNumber = 5,
                             PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.",
                             PublishedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Slug = "lorem-ipsum-dolor",
@@ -282,6 +287,7 @@ namespace BlogApp.Data.Migrations
                             IsDeleted = false,
                             IsPublished = false,
                             LastModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LikeNumber = 11,
                             PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.",
                             PublishedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Slug = "lorem-ipsum-dolor",
@@ -296,6 +302,7 @@ namespace BlogApp.Data.Migrations
                             IsDeleted = false,
                             IsPublished = true,
                             LastModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LikeNumber = 21,
                             PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.",
                             PublishedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Slug = "lorem-ipsum-dolor",
@@ -310,6 +317,7 @@ namespace BlogApp.Data.Migrations
                             IsDeleted = false,
                             IsPublished = true,
                             LastModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LikeNumber = 13,
                             PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.",
                             PublishedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Slug = "lorem-ipsum-dolor",
@@ -324,6 +332,7 @@ namespace BlogApp.Data.Migrations
                             IsDeleted = false,
                             IsPublished = true,
                             LastModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LikeNumber = 14,
                             PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.",
                             PublishedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Slug = "lorem-ipsum-dolor",
@@ -338,6 +347,7 @@ namespace BlogApp.Data.Migrations
                             IsDeleted = false,
                             IsPublished = true,
                             LastModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LikeNumber = 15,
                             PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.",
                             PublishedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Slug = "lorem-ipsum-dolor",
@@ -352,6 +362,7 @@ namespace BlogApp.Data.Migrations
                             IsDeleted = false,
                             IsPublished = true,
                             LastModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LikeNumber = 12,
                             PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.",
                             PublishedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Slug = "lorem-ipsum-dolor",
@@ -366,6 +377,7 @@ namespace BlogApp.Data.Migrations
                             IsDeleted = false,
                             IsPublished = true,
                             LastModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LikeNumber = 50,
                             PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.",
                             PublishedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Slug = "lorem-ipsum-dolor",
@@ -380,6 +392,7 @@ namespace BlogApp.Data.Migrations
                             IsDeleted = false,
                             IsPublished = true,
                             LastModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LikeNumber = 31,
                             PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.",
                             PublishedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Slug = "lorem-ipsum-dolor",

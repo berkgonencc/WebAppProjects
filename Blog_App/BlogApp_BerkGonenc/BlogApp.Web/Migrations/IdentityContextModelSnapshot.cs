@@ -37,11 +37,9 @@ namespace BlogApp.Web.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Fname")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Lname")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("LockoutEnabled")
