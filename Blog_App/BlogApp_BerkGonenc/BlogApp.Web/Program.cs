@@ -70,6 +70,12 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
+    name: "article",
+    pattern: "article/{slug}",
+    defaults: new { controller = "Home", action = "ReadMore" }
+    );
+
+app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 

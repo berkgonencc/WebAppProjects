@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlogApp.Data.Migrations
 {
     [DbContext(typeof(MyAppContext))]
-    [Migration("20221222125516_InitialDb")]
+    [Migration("20230104172936_InitialDb")]
     partial class InitialDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -258,11 +258,11 @@ namespace BlogApp.Data.Migrations
                             IsPublished = true,
                             LastModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LikeNumber = 1,
-                            PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.",
+                            PostContent = "If you’re looking to get into the crypto game How do you get free crypto? There are a variety of ways to earn free cryptocurrency in 2022, but every one of them is worth the effort. I’ve made the top methods to begin making money with cryptocurrency that is free. If it’s via airdrops or mining, there’s a method that works for everyone.",
                             PublishedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Slug = "lorem-ipsum-dolor",
-                            Summary = "Lorem ipsum dolor sit amet.",
-                            Title = "Lorem ipsum dolor."
+                            Slug = "7-ways-to-earn-free-crypto",
+                            Summary = "If you’re looking to get into the crypto game How do you get free crypto? There are a variety of ways to earn free cryptocurrency in 2022..",
+                            Title = "7 Ways to Earn Free Crypto"
                         },
                         new
                         {
@@ -273,11 +273,11 @@ namespace BlogApp.Data.Migrations
                             IsPublished = true,
                             LastModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LikeNumber = 5,
-                            PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.",
+                            PostContent = "December was a crucial month for Vela as we made significant progress in several areas of the platform. News about Vela beta incentives including a beta participation airdrop was shared, several AMAs with partners including Crypto Kingdoms, Astrabit, and The Gem Hunters were held, and product teasers were leaked by our team.",
                             PublishedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Slug = "lorem-ipsum-dolor",
-                            Summary = "Lorem ipsum dolor sit amet.",
-                            Title = "Lorem ipsum dolor."
+                            Slug = "vela-exchange-monthly-update",
+                            Summary = "December was a crucial month for Vela as we made significant progress in several areas of the platform.",
+                            Title = "Vela Exchange Monthly Update"
                         },
                         new
                         {
@@ -285,14 +285,14 @@ namespace BlogApp.Data.Migrations
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "3.png",
                             IsDeleted = false,
-                            IsPublished = false,
+                            IsPublished = true,
                             LastModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LikeNumber = 11,
-                            PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.",
+                            PostContent = "It is great to see so many of you here today. We are here to tell you about the fantastic work the Ishi Inu community has been doing together with the $ISHU team.",
                             PublishedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Slug = "lorem-ipsum-dolor",
-                            Summary = "Lorem ipsum dolor sit amet.",
-                            Title = "Lorem ipsum dolor."
+                            Slug = "the-beginning-of-a-new-era",
+                            Summary = "It is great to see so many of you here today. We are here to tell you about the fantastic work the Ishi Inu community",
+                            Title = "The beginning of a new era"
                         },
                         new
                         {
@@ -306,8 +306,8 @@ namespace BlogApp.Data.Migrations
                             PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.",
                             PublishedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Slug = "lorem-ipsum-dolor",
-                            Summary = "Lorem ipsum dolor sit amet.",
-                            Title = "Lorem ipsum dolor."
+                            Summary = "Last quarter of the roadmap is already done. The first quarter for 2022 will be starting soon.",
+                            Title = "Roadmap"
                         },
                         new
                         {
@@ -318,11 +318,11 @@ namespace BlogApp.Data.Migrations
                             IsPublished = true,
                             LastModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LikeNumber = 13,
-                            PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.",
+                            PostContent = "This is the definitive guide for anyone wanting to choose the right programming language career path in 2018. And let me be clear about something:\r\n\r\nThis is not a “top hottest languages” post throwing around a bunch of names and buzzwords.\r\n\r\nThis is an objective and practical review of the current state, tendencies, and safe near-future predictions of the IT industry at the start of 2018.\r\n\r\nIt’s based on statistical data from various trusted sources and is the result of a two-week period of in-depth research.",
                             PublishedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Slug = "lorem-ipsum-dolor",
-                            Summary = "Lorem ipsum dolor sit amet.",
-                            Title = "Lorem ipsum dolor."
+                            Slug = "here-are-the-best-programming-languages-to-learn-in-2018",
+                            Summary = "This is the definitive guide for anyone wanting to choose the right programming language career path in 2018.",
+                            Title = "Here are the best programming languages to learn in 2018"
                         },
                         new
                         {
@@ -333,11 +333,11 @@ namespace BlogApp.Data.Migrations
                             IsPublished = true,
                             LastModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LikeNumber = 14,
-                            PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.",
+                            PostContent = "After you get used to the language’s syntax it’s time to solve some problems. Start with simple ones that require implementation skills. In this stage, your goal is to define your coding style. Maybe you like to write with lots of spaces, maybe not. Maybe you put the braces on the same line with the ‘if’ statement, maybe not.",
                             PublishedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Slug = "lorem-ipsum-dolor",
-                            Summary = "Lorem ipsum dolor sit amet.",
-                            Title = "Lorem ipsum dolor."
+                            Slug = "how-to-prepare-for-competitive-programming",
+                            Summary = "This is how I won 3 out of 4 Gold medals in the Computing Olympiad.",
+                            Title = "How to prepare for competitive programming ?"
                         },
                         new
                         {
@@ -348,11 +348,11 @@ namespace BlogApp.Data.Migrations
                             IsPublished = true,
                             LastModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LikeNumber = 15,
-                            PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.",
+                            PostContent = "was over four years ago that I coined the term “Web 3.0.” Back then, it was clear to me: Ethereum — the platform I cofounded — would allow people to interact in mutually beneficial ways without anyone needing to trust each other. With technologies for message passing and data publication, we hoped to construct a peer-to-peer web that lets you do everything you can now, except there would no servers and no authorities to manage the flow of information.",
                             PublishedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Slug = "lorem-ipsum-dolor",
-                            Summary = "Lorem ipsum dolor sit amet.",
-                            Title = "Lorem ipsum dolor."
+                            Slug = "why-we-need-web-3",
+                            Summary = "Ethereum co-founder Gavin Wood on why today’s internet is broken — and how we can do better next time around — It was over four years ago that I coined the term “Web 3.0.” Back then, it was clear to me:",
+                            Title = "Why We Need Web 3.0"
                         },
                         new
                         {
@@ -375,7 +375,7 @@ namespace BlogApp.Data.Migrations
                             CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             ImageUrl = "9.png",
                             IsDeleted = false,
-                            IsPublished = true,
+                            IsPublished = false,
                             LastModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LikeNumber = 50,
                             PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.",

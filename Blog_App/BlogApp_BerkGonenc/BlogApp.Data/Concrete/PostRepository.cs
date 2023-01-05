@@ -21,5 +21,31 @@ namespace BlogApp.Data.Concrete
         {
             return await context.Posts.Where(p => p.IsPublished == true && p.IsDeleted == false).OrderBy(p => p.LikeNumber).Take(6).ToListAsync();
         }
+        public async Task<List<Post>> GetRecentPostsAsync()
+        {
+            return await context.Posts.Where(p => p.IsPublished && p.IsDeleted == false).OrderBy(p => p.PublishedOn).ToListAsync();
+        }
+
+        public async Task<Post> GetFullPostAsync(string slug)
+        {
+            return await context.Posts
+                .Where(p => p.Slug == slug)
+                .Include(p => p.PostCategories)
+                .ThenInclude(pc => pc.Category)
+                .FirstOrDefaultAsync();
+        }
+
+        public async Task<List<Post>> GetHomePagePostsAsync(string category)
+        {
+            var posts = context
+                .Posts
+                .Where(p => p.IsDeleted == false && p.IsPublished)
+                .AsQueryable();
+            if (!string.IsNullOrEmpty(category))
+            {
+                posts = posts.Include(p => p.PostCategories).ThenInclude(pc => pc.Category).Where(p => p.PostCategories.Any(pc => pc.Category.Slug == category));
+            }
+            return await posts.ToListAsync();
+        }
     }
 }

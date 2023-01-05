@@ -15,6 +15,12 @@ namespace BlogApp.Business.Abstract
         Task UpdateAsync(Post entity);
         Task CreateAsync(Post entity);
         Task<List<Post>> GetTrendingPostsAsync();
+        Task<List<Post>> GetRecentPostsAsync();
+        Task<Post> GetFullPostAsync(string slug);
+        Task<List<Post>> GetHomePagePostsAsync(string category);
+
+
+
 
     }
 }

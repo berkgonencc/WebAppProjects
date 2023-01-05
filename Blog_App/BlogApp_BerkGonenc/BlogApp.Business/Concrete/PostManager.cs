@@ -38,6 +38,21 @@ namespace BlogApp.Business.Concrete
             return await _postRepository.GetById(id);
         }
 
+        public async Task<Post> GetFullPostAsync(string slug)
+        {
+            return await _postRepository.GetFullPostAsync(slug);
+        }
+
+        public async Task<List<Post>> GetHomePagePostsAsync(string category)
+        {
+            return await _postRepository.GetHomePagePostsAsync(category);
+        }
+
+        public async Task<List<Post>> GetRecentPostsAsync()
+        {
+            return await _postRepository.GetRecentPostsAsync();
+        }
+
         public async Task<List<Post>> GetTrendingPostsAsync()
         {
             return await _postRepository.GetTrendingPostsAsync();
