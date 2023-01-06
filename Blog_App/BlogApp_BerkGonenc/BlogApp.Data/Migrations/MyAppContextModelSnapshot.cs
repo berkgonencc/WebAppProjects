@@ -303,7 +303,7 @@ namespace BlogApp.Data.Migrations
                             LikeNumber = 21,
                             PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.",
                             PublishedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Slug = "lorem-ipsum-dolor",
+                            Slug = "roadmap",
                             Summary = "Last quarter of the roadmap is already done. The first quarter for 2022 will be starting soon.",
                             Title = "Roadmap"
                         },
@@ -361,11 +361,11 @@ namespace BlogApp.Data.Migrations
                             IsPublished = true,
                             LastModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LikeNumber = 12,
-                            PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.",
+                            PostContent = "I didn’t anticipate how much I’d appreciate a @Jack of fewer trades. Key to progress is class traitors: Generals warning of a military-industrial complex, product managers who narc on mendacious management, and tech leaders who violate the Silicon Valley code of the white guy — never criticize each other or your noble missions to save the world. Jack Dorsey has drawn his sword and taken aim at colleagues attempting to centralize control and gain from the promise of decentralization. Specifically, web3.",
                             PublishedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Slug = "lorem-ipsum-dolor",
-                            Summary = "Lorem ipsum dolor sit amet.",
-                            Title = "Lorem ipsum dolor."
+                            Slug = "the-false-promise-of-web3",
+                            Summary = "The advertised decentralization of power out of the hands of a few has, in fact, been a re-centralization of power into the hands of fewer — I didn’t anticipate how much I’d appreciate a @Jack of fewer trades.",
+                            Title = "The False Promise of Web3"
                         },
                         new
                         {
@@ -376,11 +376,11 @@ namespace BlogApp.Data.Migrations
                             IsPublished = false,
                             LastModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LikeNumber = 50,
-                            PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.",
+                            PostContent = "What triggered this thought was a visit to an industrial factory last week. We all know that something is happening. And everyone seems to agree that our future will be automated. But, we tend to believe that it will only — or mainly — affect repetitive “manual labor”.\r\n\r\nAutomation of “knowledge work” is not on many people’s agenda.But, is this correct? Or, is it a naïve view that will be detrimental to business and society? The factory visit made me think about these issues and what “knowledge workers” — executives, managers, advertisers, lawyers, accountants, etc. — need to do to remain relevant in the coming new world.",
                             PublishedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Slug = "lorem-ipsum-dolor",
-                            Summary = "Lorem ipsum dolor sit amet.",
-                            Title = "Lorem ipsum dolor."
+                            Slug = "hello-new-world-of-artificial-intelligence",
+                            Summary = "Why Everyone Must Prepare for the “Automation Revolution” — We need to get smarter about emerging technologies, such as artificial intelligence, robotics and blockchain.",
+                            Title = "Hello New World of Artificial Intelligence"
                         },
                         new
                         {
@@ -391,11 +391,11 @@ namespace BlogApp.Data.Migrations
                             IsPublished = true,
                             LastModifiedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LikeNumber = 31,
-                            PostContent = "Lorem ipsum dolor sit amet, consectetaur adipisicing elit.",
+                            PostContent = "Last March, I was in Costa Rica with my girlfriend, spending our days between beautiful beaches and jungles full of exotic animals. There was barely any connectivity and we were immersed in nature in a way that we could never be in a big city. It felt great.\r\n\r\nBut in the evening, when we got back to the hotel and connected to the WiFi, our phones would immediately start pushing an entire day’s worth of notifications, constantly interrupting our special time together. It interrupted us while watching the sunset, while sipping a cocktail, while having dinner, while having an intimate moment. It took emotional time away from us.",
                             PublishedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Slug = "lorem-ipsum-dolor",
-                            Summary = "Lorem ipsum dolor sit amet.",
-                            Title = "Lorem ipsum dolor."
+                            Slug = "how-artificial-intelligence-will-make-technology-disappear",
+                            Summary = "This is a redacted transcript of a TEDx talk I gave last April at Ecole Polytechnique in France. The video can be seen on Youtube here.",
+                            Title = "How Artificial Intelligence Will Make Technology Disappear"
                         });
                 });
 

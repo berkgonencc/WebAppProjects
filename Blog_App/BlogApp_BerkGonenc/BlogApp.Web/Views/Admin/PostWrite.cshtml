@@ -1,0 +1,53 @@
+﻿@model PostWithCategoriesModel
+<form asp-controller="Admin" asp-action="PostWrite" method="post" enctype="multipart/form-data">
+    <div class="row">
+
+        <div class="col-md-8">
+            <div class="mb-3">
+                <label asp-for="Title" class="form-label"></label>
+                <input type="text" class="form-control" asp-for="Title">
+            </div>
+            <span asp-validation-for="Title" class="text-secondary"></span>
+            <div class="mb-3">
+                <label asp-for="PostContent" class="form-label">Story</label>
+                <textarea class="form-control" rows="3" asp-for="PostContent"></textarea>
+            </div>
+            <span asp-validation-for="PostContent" class="text-secondary"></span>
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Choose Image</label>
+                <input class="form-control" type="file" name="file" id="formFile" accept="img/">
+            </div>
+            <span class="text-danger">@ViewBag.ImageErrorMessage</span>
+            <div class="row">
+                <div class="col-md-10">
+                    <button class="btn btn-outline-success" type="submit">Publish</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            @foreach (var category in (List<Category>)ViewBag.Categories)
+            {
+                <div class="form-check m-4">
+                    <input class="form-check-input" type="checkbox" value=@category.Id name="categoryIds"
+                       @if (ViewData["SelectedCategories"] != null)
+                       {
+                       @(((int[])ViewData["SelectedCategories"]).Any(c=>c == category.Id) ? "checked" : "")
+                       }>
+                    <label class="form-check-label">
+                        @category.Name
+                    </label>
+                </div>
+            }
+            <span class="text-danger">@ViewBag.CategoryErrorMessage</span>
+            <hr />
+            <div class="form-check m-4">
+                <input type="checkbox" class="form-check-input" asp-for="IsPublished" />
+                <label class="form-check-label">Is Published?</label>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

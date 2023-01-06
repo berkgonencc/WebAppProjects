@@ -13,5 +13,6 @@ namespace BlogApp.Data.Abstract
         Task<List<Post>> GetRecentPostsAsync();
         Task<Post> GetFullPostAsync(string slug);
         Task<List<Post>> GetHomePagePostsAsync(string category);
+        Task CreateAsync(Post post, int[] categoryIds);
     }
 }

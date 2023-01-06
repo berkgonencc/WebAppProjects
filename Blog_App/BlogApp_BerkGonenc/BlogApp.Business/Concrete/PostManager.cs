@@ -23,6 +23,11 @@ namespace BlogApp.Business.Concrete
             throw new NotImplementedException();
         }
 
+        public async Task CreateAsync(Post post, int[] categoryIds)
+        {
+            await _postRepository.CreateAsync(post, categoryIds);
+        }
+
         public void Delete(Post entity)
         {
             throw new NotImplementedException();

@@ -13,5 +13,6 @@ namespace BlogApp.Data.Abstract
         void Delete(TEntity entity);
         Task UpdateAsync(TEntity entity);
         Task CreateAsync(TEntity entity);
+        
     }
 }

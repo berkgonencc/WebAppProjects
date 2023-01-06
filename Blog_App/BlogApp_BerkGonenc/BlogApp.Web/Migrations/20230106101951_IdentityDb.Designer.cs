@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlogApp.Web.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20230104173014_IdentityDb")]
+    [Migration("20230106101951_IdentityDb")]
     partial class IdentityDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

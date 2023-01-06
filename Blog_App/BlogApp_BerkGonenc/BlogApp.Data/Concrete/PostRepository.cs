@@ -19,7 +19,7 @@ namespace BlogApp.Data.Concrete
 
         public async Task<List<Post>> GetTrendingPostsAsync()
         {
-            return await context.Posts.Where(p => p.IsPublished == true && p.IsDeleted == false).OrderBy(p => p.LikeNumber).Take(6).ToListAsync();
+            return await context.Posts.Where(p => p.IsPublished == true && p.IsDeleted == false && p.LikeNumber > 10).OrderBy(p => p.LikeNumber).Take(3).ToListAsync();
         }
         public async Task<List<Post>> GetRecentPostsAsync()
         {
@@ -46,6 +46,18 @@ namespace BlogApp.Data.Concrete
                 posts = posts.Include(p => p.PostCategories).ThenInclude(pc => pc.Category).Where(p => p.PostCategories.Any(pc => pc.Category.Slug == category));
             }
             return await posts.ToListAsync();
+        }
+
+        public async Task CreateAsync(Post post, int[] categoryIds)
+        {
+            await context.Posts.AddAsync(post);
+            await context.SaveChangesAsync();
+            post.PostCategories = categoryIds.Select(catId => new PostCategory
+            {
+                CategoryId = catId,
+                PostId = post.Id
+            }).ToList();
+            await context.SaveChangesAsync();
         }
     }
 }

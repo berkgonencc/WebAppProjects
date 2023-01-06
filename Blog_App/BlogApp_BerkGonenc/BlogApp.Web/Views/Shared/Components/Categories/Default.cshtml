@@ -2,7 +2,7 @@
 <div class="list-group">
     @foreach (var category in Model)
     {
-        <a class="btn bg-warning bg-opacity-25 m-3 p-4 rounded-pill fw-bold shadow-lg list-group-item-light list-group-item-action @(ViewBag.SelectedCategory == category.Slug ? "active" : "")" asp-controller="Home" asp-action="PostList" asp-route-category=@category.Slug>
+        <a class="btn bg-warning bg-opacity-25 m-3 p-4 rounded-pill fw-bold shadow-lg list-group-item-light list-group-item-action @(ViewBag.SelectedCategory == category.Slug ? "active" : "")" asp-controller="Home" asp-action="PostByCategoryList" asp-route-category=@category.Slug>
             @category.Name
         </a>
     }

@@ -39,14 +39,13 @@ namespace BlogApp.Web.Controllers
             };
             return View(postModel);
         }
-        public async Task<IActionResult> PostList(string category)
+        public async Task<IActionResult> PostByCategoryList(string category)
         {
             var homePagePosts = await _postService.GetHomePagePostsAsync(category);
             ViewBag.AllPosts = await _postService.GetRecentPostsAsync();
 
             return View("Index", homePagePosts);
         }
-
 
         public IActionResult Privacy()
         {
