@@ -1,0 +1,27 @@
+﻿@model Category
+
+<form asp-controller="Admin" asp-action="CategoryAdd" method="post">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label"></label>
+                <input type="text" class="form-control" asp-for="Name">
+            </div>
+            <span asp-validation-for="Name" class="text-secondary"></span>
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label"></label>
+                <textarea class="form-control" rows="3" asp-for="Description"></textarea>
+            </div>
+            <span asp-validation-for="Description" class="text-secondary"></span>
+            <div class="row">
+                <div class="col-md-10">
+                    <button class="btn btn-outline-success" type="submit">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

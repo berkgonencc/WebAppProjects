@@ -46,12 +46,5 @@ namespace BlogApp.Web.Controllers
 
             return View("Index", homePagePosts);
         }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-
     }
 }

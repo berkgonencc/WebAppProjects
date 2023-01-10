@@ -19,6 +19,12 @@ namespace BlogApp.Business.Abstract
         Task<Post> GetFullPostAsync(string slug);
         Task<List<Post>> GetHomePagePostsAsync(string category);
         Task CreateAsync(Post post, int[] categoryIds);
+        Task<Post> GetPostWithCategoriesAsync(int id);
+        Task UpdateAsync(Post post, int[] categoryIds);
+        Task UpdateIsPublishedAsync(Post post);
+
+
+
 
 
 

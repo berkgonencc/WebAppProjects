@@ -1,0 +1,25 @@
+﻿@model RoleModel
+
+<h1 class="fs-2 mt-4 text-dark text-opacity-50 text-center">Create New Role</h1>
+<p class="placeholder-wave mt-3 pe-3" style="color:#DD9866">
+    <span class="placeholder col-12"></span>
+</p>
+<form asp-controller="Admin" asp-action="RoleCreate" method="post">
+    <div class="row">
+        <div class="input-group row mt-2">
+            <div class="col-md-4">
+                <label asp-for="Name" class="input-group-text" style="color:#6D9886"></label>
+            </div>
+            <div class="col-md-8 p-0">
+                <input type="text" asp-for="Name" class="form-control" />
+            </div>
+            <span asp-validation-for="Name" class="text-danger"></span>           
+        </div>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="mt-4 btn text-white" style="background-color:#DD9866; width:450px">Add Role</button>
+    </div>
+</form>
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

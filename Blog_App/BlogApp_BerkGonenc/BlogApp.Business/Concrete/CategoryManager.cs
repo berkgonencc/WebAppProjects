@@ -18,14 +18,14 @@ namespace BlogApp.Business.Concrete
             _categoryRepository = categoryRepository;
         }
 
-        public Task CreateAsync(Category entity)
+        public async Task CreateAsync(Category entity)
         {
-            throw new NotImplementedException();
+            await _categoryRepository.CreateAsync(entity);
         }
 
         public void Delete(Category entity)
         {
-            throw new NotImplementedException();
+            _categoryRepository.Delete(entity);
         }
 
         public async Task<List<Category>> GetAll()
@@ -38,9 +38,9 @@ namespace BlogApp.Business.Concrete
             return await _categoryRepository.GetById(id);
         }
 
-        public Task UpdateAsync(Category entity)
+        public async Task UpdateAsync(Category entity)
         {
-            throw new NotImplementedException();
+            await _categoryRepository.UpdateAsync(entity);
         }
     }
 }

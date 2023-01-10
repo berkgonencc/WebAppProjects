@@ -1,0 +1,61 @@
+﻿@model List<Category>
+@section Styles{
+    @await Html.PartialAsync("_DataTablesCSSPartial")
+}
+@section Scripts{
+    @await Html.PartialAsync("_DataTablesScriptsPartial")
+}
+<h1 class="display-6 text-dark text-center">Categories</h1>
+<span class="placeholder col-12 placeholder-xs mb-4 mt-4"></span>
+<a class="btn btn-sm btn-outline-success" asp-controller="Admin" asp-action="CategoryAdd"><strong>Create New Category</strong></a>
+<hr />
+<table class="table table-striped" id="myTable">
+    <thead>
+        <tr>
+            <th scope="col" class="text-center">Id</th>
+            <th scope="col" class="text-center">Name</th>
+            <th scope="col" class="text-center">Description</th>
+            <th scope="col" class="text-center">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var category in Model)
+        {
+            <tr class="text-center">
+                <td>@category.Id</td>
+                <td>@category.Name</td>
+                <td>@category.Description</td>
+                
+                <td>
+                    <a asp-controller="Admin" asp-action="CategoryEdit" asp-route-id=@category.Id class="btn btn-sm text-white" style="background-color:#6D9886">Edit</a>
+                    <!-- Button Trigger Modal -->
+                    <button type="button" class="btn btn-sm text-white" style="background-color:#810000" data-bs-toggle="modal" data-bs-target="#deleteModal_@category.Id">
+                        Delete
+                    </button>
+                    <!-- Delete Modal -->
+                    <div class="modal fade" id="deleteModal_@category.Id" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" style="color:#810000" id="deleteModalLabel">Are you sure you want to delete this item <strong>permanently</strong>?</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    This category will be deleted. Do you want to delete this category?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                    <a asp-controller="Admin"
+                                   asp-action="CategoryDelete"
+                                   asp-route-id=@category.Id
+                                   type="button" class="btn text-white" style="background-color:#810000">Yes</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

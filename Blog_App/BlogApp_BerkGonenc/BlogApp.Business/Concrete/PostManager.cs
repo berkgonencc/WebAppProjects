@@ -30,7 +30,7 @@ namespace BlogApp.Business.Concrete
 
         public void Delete(Post entity)
         {
-            throw new NotImplementedException();
+            _postRepository.Delete(entity);
         }
 
         public async Task<List<Post>> GetAll()
@@ -53,6 +53,11 @@ namespace BlogApp.Business.Concrete
             return await _postRepository.GetHomePagePostsAsync(category);
         }
 
+        public async Task<Post> GetPostWithCategoriesAsync(int id)
+        {
+            return await _postRepository.GetPostWithCategoriesAsync(id);
+        }
+
         public async Task<List<Post>> GetRecentPostsAsync()
         {
             return await _postRepository.GetRecentPostsAsync();
@@ -66,6 +71,17 @@ namespace BlogApp.Business.Concrete
         public Task UpdateAsync(Post entity)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task UpdateAsync(Post post, int[] categoryIds)
+        {
+            await _postRepository.UpdateAsync(post, categoryIds);
+        }
+
+        public async Task UpdateIsPublishedAsync(Post post)
+        {
+           await _postRepository.UpdateIsPublishedAsync(post);
+            
         }
     }
 }

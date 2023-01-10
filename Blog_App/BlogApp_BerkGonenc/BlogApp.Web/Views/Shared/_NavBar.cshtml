@@ -10,12 +10,28 @@
 
             @if (User.Identity.IsAuthenticated)
             {
-                <div class="nav-item">
-                    <a class="nav-link text-white-50" asp-controller="Admin" asp-action="PostList">Admin Posts</a>
-                </div>
-                <div class="nav-item">
-                    <a class="nav-link text-white-50 ms-1" asp-controller="Admin" asp-action="PostWrite"><i class="bi bi-pencil-square"></i> Write</a>
-                </div>
+                @if (User.IsInRole("Admin"))
+                {
+                    <div class="nav-item">
+                        <a class="nav-link text-white-50 ms-1" asp-controller="Admin" asp-action="PostWrite"><i class="bi bi-pencil-square"></i> Write</a>
+                    </div>
+                    <div class="nav-item">
+                        <a class="nav-link text-white-50" asp-controller="Admin" asp-action="CategoryList"><i class="bi bi-tags"></i> Categories</a>
+                    </div>
+                    <div class="nav-item">
+                        <a class="nav-link text-white-50" asp-controller="Admin" asp-action="PostList"><i class="bi bi-file-post"></i> Posts</a>
+                    </div>
+
+                    <div class="nav-item">
+                        <a class="nav-link text-white-50 ms-1" asp-controller="Admin" asp-action="UserList">Users</a>
+                    </div>
+                    <div class="nav-item">
+                        <a class="nav-link text-white-50 ms-1" asp-controller="Admin" asp-action="RoleList">Roles</a>
+                    </div>
+                }
+            }
+            @if (User.Identity.IsAuthenticated)
+            {
                 <div class="d-flex">
                     <div class="nav-item">
                         <a class="nav-link text-white" asp-controller="Account" asp-action="Logout">Logout</a>

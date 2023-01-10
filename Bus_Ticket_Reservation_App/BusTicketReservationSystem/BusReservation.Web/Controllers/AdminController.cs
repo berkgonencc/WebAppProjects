@@ -106,7 +106,6 @@ namespace BusReservation.Web.Controllers
                     if (result.Succeeded)
                     {
                         var userRoles = await _userManager.GetRolesAsync(user);
-                        //Hata verme durumuna önceden tedbir alırız. "null'se boş bırakır".
                         userModel.SelectedRoles = userModel.SelectedRoles ?? new string[] { };
                         await _userManager.AddToRolesAsync(user, userModel.SelectedRoles.Except(userRoles).ToArray<string>());
                         await _userManager.RemoveFromRolesAsync(user, userRoles.Except(userModel.SelectedRoles).ToArray<string>());

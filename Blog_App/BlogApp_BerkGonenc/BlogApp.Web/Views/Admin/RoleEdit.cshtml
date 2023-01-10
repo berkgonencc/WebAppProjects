@@ -1,0 +1,89 @@
+﻿@model RoleDetails
+<h1 class="fs-2 mt-4 text-center" style="color:#6D9886">Edit <span class="text-dark text-opacity-50">@Model.Role.Name </span>Role</h1>
+<p class="placeholder-wave mt-2" style="color:#6D9886">
+    <span class="placeholder col-12"></span>
+</p>
+<form asp-controller="Admin" asp-action="RoleEdit" method="post">
+    <input type="hidden" name="RoleId" value=@Model.Role.Id />
+    <input type="hidden" name="RoleName" value=@Model.Role.Name />
+    <div class="row">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="col-md-6">
+            <h3 class="p-2" style="color:#6D9886">Add to @Model.Role.Name Role</h3>
+            <table class="table table-striped table-hover table-bordered table-sm">
+                @if (Model.NonMembers.Count() > 0)
+                {
+                    <thead>
+                        <tr style="background-color:#DD9866">
+                            <td>
+                                User Name
+                            </td>
+                            <td>
+                                Select
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model.NonMembers)
+                        {
+                            <tr>
+                                <td>@user.UserName</td>
+                                <td>
+                                    <input type="checkbox" value=@user.Id name="IdsToAdd" />
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="2">All members are in this role!</td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="col-md-6">
+            <h3 class="p-2" style="color:#810000">Remove From @Model.Role.Name Role</h3>
+            <table class="table table-striped table-hover table-bordered table-sm">
+                @if (Model.Members.Count() > 0)
+                {
+                    <thead>
+                        <tr style="background-color:#DD9866">
+                            <td>
+                                User Name
+                            </td>
+                            <td>
+                                Select
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model.Members)
+                        {
+                            <tr>
+                                <td>@user.UserName</td>
+                                <td>
+                                    <input type="checkbox" value=@user.Id name="IdsToRemove" />
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="2">No members are in this role!</td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+    <div class="text-center mt-4">
+        <button type="submit" class="btn text-white" style="background-color:#6D9886">Save Changes</button>
+        <a asp-controller="Admin" asp-action="RoleList" class="btn btn-secondary">Close</a>
+    </div>
+</form>

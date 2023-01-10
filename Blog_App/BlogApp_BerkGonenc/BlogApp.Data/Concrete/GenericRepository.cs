@@ -17,14 +17,16 @@ namespace BlogApp.Data.Concrete
             _dbContext = dbContext;
         }
 
-        public Task CreateAsync(TEntity entity)
+        public async Task CreateAsync(TEntity entity)
         {
-            throw new NotImplementedException();
+            await _dbContext.Set<TEntity>().AddAsync(entity);
+            await _dbContext.SaveChangesAsync();
         }
 
         public void Delete(TEntity entity)
         {
-            throw new NotImplementedException();
+            _dbContext.Set<TEntity>().Remove(entity);
+            _dbContext.SaveChanges();
         }
 
         public async Task<List<TEntity>> GetAll()
@@ -39,9 +41,10 @@ namespace BlogApp.Data.Concrete
 
         }
 
-        public Task UpdateAsync(TEntity entity)
+        public async Task UpdateAsync(TEntity entity)
         {
-            throw new NotImplementedException();
+            _dbContext.Set<TEntity>().Update(entity);
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

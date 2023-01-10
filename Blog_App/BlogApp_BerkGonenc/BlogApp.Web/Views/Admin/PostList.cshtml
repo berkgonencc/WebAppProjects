@@ -1,10 +1,14 @@
 ﻿@model List<Post>
-<h1 class="display-6 text-dark text-center">Posts</h1>
-<hr />
+@section Styles{
+    @await Html.PartialAsync("_DataTablesCSSPartial")
+}
+@section Scripts{
+    @await Html.PartialAsync("_DataTablesScriptsPartial")
+}
 
-<a class="btn btn-sm btn-outline-danger opacity-75" asp-controller="Admin" asp-action="ShowDeletedPosts" ><strong>Show Deleted Posts</strong></a>
-<hr />
-<table class="table table-striped">
+<h1 class="display-6 text-dark text-center">Posts</h1>
+<span class="placeholder col-12 placeholder-xs mb-4 mt-4"></span>
+<table class="table table-striped" id="myTable">
     <thead>
         <tr>
             <th scope="col" class="text-center">Image</th>
@@ -32,7 +36,7 @@
                       asp-route-id=@post.Id
                       method="post">
                         <div class="form-check form-switch d-flex justify-content-center">
-                            <input class="form-check-input opacity-75" type="checkbox" role="switch" name="isHome" onchange="document.getElementById('isPublishedForm_@post.Id').submit()" id="isPublished_@post.Id" @(post.IsPublished ? "checked" : "")>
+                            <input class="form-check-input opacity-75" type="checkbox" role="switch" name="isPublished" onchange="document.getElementById('isPublishedForm_@post.Id').submit()" id="isPublished_@post.Id" @(post.IsPublished ? "checked" : "")>
                             <label class="form-check-label" for="isPublished"></label>
                         </div>
                     </form>

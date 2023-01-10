@@ -59,5 +59,48 @@ namespace BlogApp.Data.Concrete
             }).ToList();
             await context.SaveChangesAsync();
         }
+
+        public async Task<Post> GetPostWithCategoriesAsync(int id)
+        {
+            return await context
+                .Posts
+                .Where(p => p.Id == id && p.IsDeleted == false)
+                .Include(p => p.PostCategories)
+                .ThenInclude(pc => pc.Category)
+                .FirstOrDefaultAsync();
+        }
+
+        public async Task UpdateAsync(Post post, int[] categoryIds)
+        {
+            Post entity = await context
+                .Posts
+                .Include(p=>p.PostCategories)
+                .FirstOrDefaultAsync(pc=>pc.Id== post.Id);
+            entity.Title = post.Title;
+            entity.PostContent = post.PostContent;
+            entity.Slug = post.Slug;
+            entity.IsPublished = post.IsPublished;
+            entity.PostCategories = categoryIds.Select(c => new PostCategory()
+            {
+                PostId = entity.Id,
+                CategoryId = c
+            }).ToList();
+            context.Update(entity);
+            await context.SaveChangesAsync();
+        }
+
+        public async Task UpdateIsPublishedAsync(Post post)
+        {
+            if (post.IsPublished)
+            {
+                post.IsPublished = false;
+            } else
+            {
+                post.IsPublished = true;
+            }
+            context.Entry(post).State = EntityState.Modified;
+            await context.SaveChangesAsync();
+        }
+
     }
 }
