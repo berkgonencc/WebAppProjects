@@ -1,5 +1,4 @@
-# MiniShop Project:
-## E-commerce Web App
+# MiniShop Project (E-commerce Web App)
 
 - The database is created with the EF Core CodeFirst and Dependency Injection software design approaches.
 - The user can register, login and logout With the ASP Net Core Identity package.
