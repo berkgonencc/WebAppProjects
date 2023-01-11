@@ -6,6 +6,7 @@
 - It is built using SOLID Principles.
 
 ### Technologies Used:
+
 C# .Net, ASP Net Core(MVC), ASP Net Core Identity, EF Core CodeFirst, Bootstrap, Javascript, CSS3, HTML5, SQLite , Generic Repository Pattern, Layered Architecture, OOP.
 
 ### How to set up and run this project:
