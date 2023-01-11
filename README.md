@@ -1,8 +1,8 @@
 # Projects
 
-### 1. MiniShop Project (E-commerce Web App)
-### 2. Bus Ticket Booking Project:
-### 3. Personal Blog Project:
+#### 1. MiniShop Project (E-commerce Web App)
+#### 2. Bus Ticket Booking Project
+#### 3. Personal Blog Project
 
 *******************************************************************************************************************************************
 
