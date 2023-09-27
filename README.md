@@ -1,8 +1,8 @@
 # Projects
 
-1. [MiniShop Project (E-commerce Web App)](./WebAppProjects/Mini_Shop_App)
-2. [Bus Ticket Booking Project](./WebAppProjects/Bus_Ticket_Reservation_App)
-3. [Personal Blog Project](./WebAppProjects/Blog_App)
+1. [MiniShop Project (E-commerce Web App)](./Mini_Shop_App)
+2. [Bus Ticket Booking Project](./Bus_Ticket_Reservation_App)
+3. [Personal Blog Project](./Blog_App)
 
 *******************************************************************************************************************************************
 
