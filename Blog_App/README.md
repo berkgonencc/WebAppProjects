@@ -6,13 +6,13 @@
 - It is built using SOLID Principles.
 
 ## Technologies Used:
-C# .Net, ASP Net Core(MVC), ASP Net Core Identity, EF Core CodeFirst, Bootstrap, Javascript, CSS3, HTML5, SQLite , Generic Repository Pattern, Layered Architecture, OOP
+C# .Net, ASP Net Core(MVC), ASP Net Core Identity, EF Core CodeFirst, Bootstrap, Javascript, CSS3, HTML5, SQLite, Generic Repository Pattern, Layered Architecture, OOP
 
 ## How to set up and run this project:
 - The project is developed with .NET 6.0 so the mentioned C# .Net version must be installed.
-- Open the BusTicketReservationSystem.sln file and this will open the project in Visual Studio.
-- Download all the necessary packages from the Nuget Package Manager. All the .NET and EF core packages are having the version of 6.0.10.
-- SQlite has been used as database so migration or database update command is not required.
+- Open the BusTicketReservationSystem.sln file, which will open the project in Visual Studio.
+- Download all the necessary packages from the Nuget Package Manager. All the .NET and EF core packages have the version of 6.0.10.
+- SQLite has been used as a database so migration or database update command is not required.
 - After all, you can run the project locally in your browser.
 
 Admin Login: (email: "admin@gmail.com", password: "Qwe123.")
